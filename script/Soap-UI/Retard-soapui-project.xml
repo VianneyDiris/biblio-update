@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="e9b4ad07-45ce-482d-99d2-126a6e094de5" activeEnvironment="Default" name="Retard" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="349f1c34-46f3-4975-a0d0-9be597041a8c" wsaVersion="NONE" name="GestionRelanceServiceSoapBinding" type="wsdl" bindingName="{http://gestionrelance.ws.vianney.com/}GestionRelanceServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/bibliotheque-webapp/services/gestionrelance?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/bibliotheque-webapp/services/gestionrelance?wsdl"><con:part><con:url>http://localhost:8080/bibliotheque-webapp/services/gestionrelance?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="GestionRelanceService" targetNamespace="http://gestionrelance.ws.vianney.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gestionrelance.ws.vianney.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://gestionrelance.ws.vianney.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getListPretNonRendu" type="tns:getListPretNonRendu"/>
+      <xs:element name="getListPretNonRenduByUser" type="tns:getListPretNonRenduByUser"/>
+      <xs:element name="getListPretNonRenduByUserResponse" type="tns:getListPretNonRenduByUserResponse"/>
+      <xs:element name="getListPretNonRenduResponse" type="tns:getListPretNonRenduResponse"/>
+      <xs:complexType name="getListPretNonRendu">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getListPretNonRenduResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:Pret"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Pret">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="date_debut" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="date_fin" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="ouvrage" type="tns:Ouvrage"/>
+          <xs:element name="prolongation" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="status" type="tns:Status"/>
+          <xs:element minOccurs="0" name="utilisateur" type="tns:Utilisateur"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Ouvrage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="editeur" type="tns:Editeur"/>
+          <xs:element minOccurs="0" name="exemplaire" type="xs:int"/>
+          <xs:element name="ISBN" type="xs:long"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="langue" type="tns:Langue"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="listAuteur" nillable="true" type="tns:Auteur"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="listGenre" nillable="true" type="tns:Genre"/>
+          <xs:element minOccurs="0" name="photos" type="xs:string"/>
+          <xs:element minOccurs="0" name="resume" type="xs:string"/>
+          <xs:element minOccurs="0" name="titre" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Editeur">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Langue">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="code" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="langue" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Auteur">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="prenom" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Genre">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="genre" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Status">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="status" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Utilisateur">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="mail" type="xs:string"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="prenom" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getListPretNonRenduByUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="utilisateur" type="tns:Utilisateur"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getListPretNonRenduByUserResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:Pret"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getListPretNonRendu">
+    <wsdl:part element="tns:getListPretNonRendu" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListPretNonRenduByUser">
+    <wsdl:part element="tns:getListPretNonRenduByUser" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListPretNonRenduResponse">
+    <wsdl:part element="tns:getListPretNonRenduResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListPretNonRenduByUserResponse">
+    <wsdl:part element="tns:getListPretNonRenduByUserResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GestionRelance">
+    <wsdl:operation name="getListPretNonRendu">
+      <wsdl:input message="tns:getListPretNonRendu" name="getListPretNonRendu"></wsdl:input>
+      <wsdl:output message="tns:getListPretNonRenduResponse" name="getListPretNonRenduResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListPretNonRenduByUser">
+      <wsdl:input message="tns:getListPretNonRenduByUser" name="getListPretNonRenduByUser"></wsdl:input>
+      <wsdl:output message="tns:getListPretNonRenduByUserResponse" name="getListPretNonRenduByUserResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GestionRelanceServiceSoapBinding" type="tns:GestionRelance">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getListPretNonRendu">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListPretNonRendu">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListPretNonRenduResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListPretNonRenduByUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListPretNonRenduByUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListPretNonRenduByUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GestionRelanceService">
+    <wsdl:port binding="tns:GestionRelanceServiceSoapBinding" name="GestionRelancePort">
+      <soap:address location="http://localhost:8080/bibliotheque-webapp/services/gestionrelance"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionrelance</con:endpoint></con:endpoints><con:operation id="57a6a047-2c73-430b-a957-100632f6d43e" isOneWay="false" action="" name="getListPretNonRendu" bindingOperationName="getListPretNonRendu" type="Request-Response" outputName="getListPretNonRenduResponse" inputName="getListPretNonRendu" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2d54946b-7fc1-4578-aeed-1a26d5d82d76" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionrelance</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionrelance.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:getListPretNonRendu/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionrelance.ws.vianney.com/GestionRelance/getListPretNonRendu"/></con:call></con:operation><con:operation id="4b1a099c-d3dc-4f3a-9f6b-20080a097299" isOneWay="false" action="" name="getListPretNonRenduByUser" bindingOperationName="getListPretNonRenduByUser" type="Request-Response" outputName="getListPretNonRenduByUserResponse" inputName="getListPretNonRenduByUser" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7cd53973-a7c7-4cb1-a991-5d68fee6bd13" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionrelance</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionrelance.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:getListPretNonRenduByUser>\r
+         <!--Optional:-->\r
+         <utilisateur>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <mail>?</mail>\r
+            <!--Optional:-->\r
+            <nom>?</nom>\r
+            <!--Optional:-->\r
+            <password>?</password>\r
+            <!--Optional:-->\r
+            <prenom>?</prenom>\r
+         </utilisateur>\r
+      </ges:getListPretNonRenduByUser>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionrelance.ws.vianney.com/GestionRelance/getListPretNonRenduByUser"/></con:call></con:operation></con:interface><con:testSuite id="c872cffa-f919-4f63-b533-781f977b5028" name="TestRetard"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="c708f841-aca6-4b77-b9a9-8ccaf51ac5f3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase Retard" searchProperties="true"><con:settings/><con:testStep type="request" id="07777c95-51e1-47ef-9422-2e9379e2a32c" name="getListPretNonRendu - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GestionRelanceServiceSoapBinding</con:interface><con:operation>getListPretNonRendu</con:operation><con:request name="getListPretNonRendu - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="cdc54af4-3de4-486d-88ec-a3fc7669e9e9"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionrelance</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionrelance.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:getListPretNonRendu/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="d908f1d1-d8bd-4b4e-b6fd-f50a40c01d21" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionrelance.ws.vianney.com/GestionRelance/getListPretNonRendu"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="d3cbe483-8251-4481-975d-36ab13f821fa" name="getListPretNonRenduByUser - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GestionRelanceServiceSoapBinding</con:interface><con:operation>getListPretNonRenduByUser</con:operation><con:request name="getListPretNonRenduByUser - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="5bb8e225-ee2b-45bb-9082-5a72add3e07f"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionrelance</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionrelance.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:getListPretNonRenduByUser>\r
+         <!--Optional:-->\r
+         <utilisateur>\r
+            <!--Optional:-->\r
+            <id>${#Project#id}</id>\r
+            <!--Optional:-->\r
+            <mail>${#Project#mail}</mail>\r
+            <!--Optional:-->\r
+            <nom>${#Project#nom}</nom>\r
+            <!--Optional:-->\r
+            <password>${#Project#password}</password>\r
+            <!--Optional:-->\r
+            <prenom>${#Project#prenom}</prenom>\r
+         </utilisateur>\r
+      </ges:getListPretNonRenduByUser>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1876d2a5-d110-4e6b-9e53-0288a20160dc" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionrelance.ws.vianney.com/GestionRelance/getListPretNonRenduByUser"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>id</con:name><con:value>6</con:value></con:property><con:property><con:name>nom</con:name><con:value>Diris</con:value></con:property><con:property><con:name>prenom</con:name><con:value>Vianney</con:value></con:property><con:property><con:name>mail</con:name><con:value>vianney.diris@gmail.com</con:value></con:property><con:property><con:name>password</con:name><con:value>azerty</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

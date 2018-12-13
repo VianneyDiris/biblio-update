@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- ===== Managers declaration ===== -->
+	<bean id="auteurManager"  class="org.core.app.business.impl.manager.AuteurManagerImpl" />
+	<bean id="editeurManager"  class="org.core.app.business.impl.manager.EditeurManagerImpl" />
+	<bean id="genreManager"  class="org.core.app.business.impl.manager.GenreManagerImpl" />
+	<bean id="langueManager"  class="org.core.app.business.impl.manager.LangueManagerImpl" />
+	<bean id="ouvrageManager"  class="org.core.app.business.impl.manager.OuvrageManagerImpl" />
+	<bean id="pretManager"  class="org.core.app.business.impl.manager.PretManagerImpl" >
+	<property name="transactionManager" ref="transactionManager" />
+	</bean>
+	<bean id="statusManager" class="org.core.app.business.impl.manager.StatusManagerImpl"/>
+	<bean id="utilisateurManager" class="org.core.app.business.impl.manager.UtilisateurManagerImpl"/>
+
+
+	<!-- ===== ManagerFactory ===== -->
+	<bean id="managerFactory"  class="org.core.app.business.impl.ManagerFactoryImpl">
+		<property name="auteurManager" ref="auteurManager" />
+		<property name="editeurManager" ref="editeurManager" />
+		<property name="genreManager" ref="genreManager" />
+		<property name="langueManager" ref="langueManager" />
+		<property name="ouvrageManager" ref="ouvrageManager" />
+		<property name="pretManager" ref="pretManager" />
+		<property name="statusManager" ref="statusManager" />
+		<property name="utilisateurManager" ref="utilisateurManager" />
+		
+	</bean>
+
+	<!-- ==== AbstractManager ===== -->
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="org.core.app.business.impl.AbstractManagerImpl" />
+		<property name="targetMethod" value="setDaoFactory" />
+		<property name="arguments" ref="daoFactory" />
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSourceBiblio"/>
+	</bean>
+</beans>

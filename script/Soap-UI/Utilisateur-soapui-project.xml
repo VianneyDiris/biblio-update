@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="0083939f-464a-4e3f-a91d-f8f5bcd28bcc" activeEnvironment="Default" name="Utilisateur" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="70325ba4-761b-41f1-a0a0-71488909eee9" wsaVersion="NONE" name="GestionUserServiceSoapBinding" type="wsdl" bindingName="{http://gestionuser.ws.vianney.com/}GestionUserServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/bibliotheque-webapp/services/gestionuser?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/bibliotheque-webapp/services/gestionuser?wsdl"><con:part><con:url>http://localhost:8080/bibliotheque-webapp/services/gestionuser?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="GestionUserService" targetNamespace="http://gestionuser.ws.vianney.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gestionuser.ws.vianney.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://gestionuser.ws.vianney.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="addUtilisateur" type="tns:addUtilisateur"/>
+      <xs:element name="addUtilisateurResponse" type="tns:addUtilisateurResponse"/>
+      <xs:element name="getUtilisateur" type="tns:getUtilisateur"/>
+      <xs:element name="getUtilisateurResponse" type="tns:getUtilisateurResponse"/>
+      <xs:complexType name="addUtilisateur">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:Utilisateur"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Utilisateur">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="mail" type="xs:string"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="prenom" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addUtilisateurResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getUtilisateur">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="mail" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getUtilisateurResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:Utilisateur"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addUtilisateur">
+    <wsdl:part element="tns:addUtilisateur" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilisateurResponse">
+    <wsdl:part element="tns:getUtilisateurResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addUtilisateurResponse">
+    <wsdl:part element="tns:addUtilisateurResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUtilisateur">
+    <wsdl:part element="tns:getUtilisateur" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GestionUser">
+    <wsdl:operation name="addUtilisateur">
+      <wsdl:input message="tns:addUtilisateur" name="addUtilisateur"></wsdl:input>
+      <wsdl:output message="tns:addUtilisateurResponse" name="addUtilisateurResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilisateur">
+      <wsdl:input message="tns:getUtilisateur" name="getUtilisateur"></wsdl:input>
+      <wsdl:output message="tns:getUtilisateurResponse" name="getUtilisateurResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GestionUserServiceSoapBinding" type="tns:GestionUser">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addUtilisateur">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addUtilisateur">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addUtilisateurResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUtilisateur">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUtilisateur">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUtilisateurResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GestionUserService">
+    <wsdl:port binding="tns:GestionUserServiceSoapBinding" name="GestionUserPort">
+      <soap:address location="http://localhost:8080/bibliotheque-webapp/services/gestionuser"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionuser</con:endpoint></con:endpoints><con:operation id="7e689192-3cd6-44bd-a11a-190858b3c95b" isOneWay="false" action="" name="addUtilisateur" bindingOperationName="addUtilisateur" type="Request-Response" outputName="addUtilisateurResponse" inputName="addUtilisateur" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a707f17f-affd-4a87-8dce-b8de2d3f20ea" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionuser</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionuser.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:addUtilisateur>\r
+         <!--Optional:-->\r
+         <arg0>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <mail>?</mail>\r
+            <!--Optional:-->\r
+            <nom>?</nom>\r
+            <!--Optional:-->\r
+            <password>?</password>\r
+            <!--Optional:-->\r
+            <prenom>?</prenom>\r
+         </arg0>\r
+      </ges:addUtilisateur>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionuser.ws.vianney.com/GestionUser/addUtilisateur"/></con:call></con:operation><con:operation id="e9cdec35-57af-4d2b-95ae-de8ce975576d" isOneWay="false" action="" name="getUtilisateur" bindingOperationName="getUtilisateur" type="Request-Response" outputName="getUtilisateurResponse" inputName="getUtilisateur" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e76b5cb6-1e44-485a-b885-ef195290c295" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionuser</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionuser.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:getUtilisateur>\r
+         <!--Optional:-->\r
+         <mail>?</mail>\r
+         <!--Optional:-->\r
+         <password>?</password>\r
+      </ges:getUtilisateur>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionuser.ws.vianney.com/GestionUser/getUtilisateur"/></con:call></con:operation></con:interface><con:testSuite id="09add75c-e0fe-432c-9d56-170f8d9f2c2c" name="TestUser"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="f325a74f-deb5-4b60-9729-ad6a4222f51a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase User" searchProperties="true"><con:settings/><con:testStep type="request" id="7abf3f21-ceff-4658-a812-407a5ad4fe36" name="addUtilisateur - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GestionUserServiceSoapBinding</con:interface><con:operation>addUtilisateur</con:operation><con:request name="addUtilisateur - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="dea3af0e-c8da-4674-b993-613cb4c3e452"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionuser</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionuser.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:addUtilisateur>\r
+         <!--Optional:-->\r
+         <arg0>\r
+            <!--Optional:-->\r
+            <id>${#Project#id}</id>\r
+            <!--Optional:-->\r
+            <mail>${#Project#mail}</mail>\r
+            <!--Optional:-->\r
+            <nom>${#Project#nom}</nom>\r
+            <!--Optional:-->\r
+            <password>${#Project#password}</password>\r
+            <!--Optional:-->\r
+            <prenom>${#Project#prenom}</prenom>\r
+         </arg0>\r
+      </ges:addUtilisateur>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c6b10fd2-16ba-46e4-8de4-61ba7a84a48f" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionuser.ws.vianney.com/GestionUser/addUtilisateur"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="d1a9dba5-c146-4912-91a7-931987e44bbc" name="getUtilisateur - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GestionUserServiceSoapBinding</con:interface><con:operation>getUtilisateur</con:operation><con:request name="getUtilisateur - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="08bcb2be-df9b-440e-be67-b4368901f617"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionuser</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionuser.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:getUtilisateur>\r
+         <!--Optional:-->\r
+         <mail>${#Project#mail}</mail>\r
+         <!--Optional:-->\r
+         <password>${#Project#password}</password>\r
+      </ges:getUtilisateur>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="84b84977-f16b-4512-90d6-9807c5d427c3" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionuser.ws.vianney.com/GestionUser/getUtilisateur"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>id</con:name><con:value>0</con:value></con:property><con:property><con:name>nom</con:name><con:value>test</con:value></con:property><con:property><con:name>prenom</con:name><con:value>test</con:value></con:property><con:property><con:name>mail</con:name><con:value>vianney.diris@hotmail.fr</con:value></con:property><con:property><con:name>password</con:name><con:value>azerty</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

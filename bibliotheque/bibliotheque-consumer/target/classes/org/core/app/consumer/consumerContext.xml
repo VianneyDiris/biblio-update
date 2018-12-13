@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- ===== Dao declaration ===== -->
+    <bean id="auteurDao" class="org.core.app.consumer.impl.dao.AuteurDaoImpl"/>
+    <bean id="editeurDao" class="org.core.app.consumer.impl.dao.EditeurDaoImpl"/>
+    <bean id="genreDao" class="org.core.app.consumer.impl.dao.GenreDaoImpl"/>
+    <bean id="langueDao" class="org.core.app.consumer.impl.dao.LangueDaoImpl"/>
+    <bean id="ouvrageDao" class="org.core.app.consumer.impl.dao.OuvrageDaoImpl"/>
+    <bean id="pretDao" class="org.core.app.consumer.impl.dao.PretDaoImpl"/>
+    <bean id="statusDao" class="org.core.app.consumer.impl.dao.StatusDaoImpl"/>
+    <bean id="utilisateurDao" class="org.core.app.consumer.impl.dao.UtilisateurDaoImpl"/>
+    
+    
+
+    <!-- ===== DaoFactory ===== -->
+    <bean id="daoFactory" class="org.core.app.consumer.impl.DaoFactoryImpl">
+        <property name="auteurDao" ref="auteurDao"/>
+        <property name="editeurDao" ref="editeurDao"/>
+        <property name="genreDao" ref="genreDao"/>
+        <property name="langueDao" ref="langueDao"/>
+        <property name="ouvrageDao" ref="ouvrageDao"/>
+        <property name="pretDao" ref="pretDao"/>
+        <property name="statusDao" ref="statusDao"/>
+        <property name="utilisateurDao" ref="utilisateurDao"/>
+     </bean>
+    
+
+    <!-- ==== AbstractDao ===== -->
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="org.core.app.consumer.impl.AbstractDaoImpl"/>
+        <property name="targetMethod" value="setDataSource"/>
+        <property name="arguments" ref="dataSourceBiblio"/>
+    </bean>
+</beans>

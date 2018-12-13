@@ -1,0 +1,9 @@
+org\core\app\model\bean\Ouvrage.class
+org\core\app\model\bean\Genre.class
+org\core\app\model\bean\Status.class
+org\core\app\model\exception\NotFoundException.class
+org\core\app\model\bean\Auteur.class
+org\core\app\model\bean\Editeur.class
+org\core\app\model\bean\Langue.class
+org\core\app\model\bean\Utilisateur.class
+org\core\app\model\bean\Pret.class

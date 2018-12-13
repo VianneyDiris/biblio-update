@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="default" extends="struts-default">
+		<!-- Action par défaut -->
+		<default-action-ref name="index" />
+
+		<!-- ########################### SITE ############################################# -->
+		<!-- Action "index" -->
+		<action name="index">
+			<result>jsp/index.jsp</result>
+		</action>
+
+		<!-- Action "login" -->
+		<action name="login" class="org.annexe.app.webapp.action.LoginAction" method="doLogin">
+			<result name="input">/jsp/site/connexion.jsp</result>
+			<result name="success" type="redirectAction">ouvrage</result>
+		</action>
+
+		<!-- Action "inscription" -->
+		<action name="inscription" class="org.annexe.app.webapp.action.GestionUtilisateurAction" method="doCreateUser">
+			<result name="input">jsp/site/inscription.jsp</result>
+			<result name="success">jsp/site/inscription.jsp</result>
+		</action>
+
+		<action name="logout"
+			class="org.annexe.app.webapp.action.LoginAction"
+			method="doLogout">
+			<result type="redirectAction">index</result>
+		</action>
+		
+		<!-- Action "list ouvrage" -->
+		<action name="ouvrage" class="org.annexe.app.webapp.action.GestionOuvrageAction" method="doListOuvrage">
+			<result name="success">jsp/site/ouvrage.jsp</result>
+		</action>
+		
+		<!-- Action "détail ouvrage" -->
+		<action name="ouvrage_detail" class="org.annexe.app.webapp.action.GestionOuvrageAction" method="doDetail">
+			<result name="success">jsp/site/ouvrage_detail.jsp</result>
+		</action>
+		
+		<!-- Action "add Pret" -->
+		<action name="addPret" class="org.annexe.app.webapp.action.GestionPretAction" method="doAddPret">
+			<result name="success" type="redirectAction">ouvrage</result>
+		</action>
+		
+		<!-- Action "vos Pret" -->
+		<action name="pret" class="org.annexe.app.webapp.action.GestionPretAction" method="doListPret">
+			<result name="success">jsp/site/pret.jsp</result>
+		</action>
+		
+		<!-- Action "vos Pret" -->
+		<action name="pret_detail" class="org.annexe.app.webapp.action.GestionPretAction" method="doPretDetail">
+			<result name="success">jsp/site/pret_detail.jsp</result>
+		</action>
+		
+		<action name="prolongation" class="org.annexe.app.webapp.action.GestionPretAction" method="doProlongation">
+			<result name="success" type="redirectAction">
+			<param name="actionName">pret_detail</param>
+			<param name="id">${id}</param>
+			</result>
+		</action>
+
+		<!-- Action "vos Pret" -->
+		<action name="endPret" class="org.annexe.app.webapp.action.GestionPretAction" method="doEndPret">
+			<result type="redirectAction">pret</result>
+		</action>
+
+	</package>
+</struts>

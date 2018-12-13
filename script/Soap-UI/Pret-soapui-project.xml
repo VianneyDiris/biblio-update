@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="e6ce8a70-66f2-4558-a810-20175e566578" activeEnvironment="Default" name="Pret" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="d6d417e3-3b36-4abc-baa2-97c75c5f8293" wsaVersion="NONE" name="GestionPretServiceSoapBinding" type="wsdl" bindingName="{http://gestionpret.ws.vianney.com/}GestionPretServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/bibliotheque-webapp/services/gestionpret?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/bibliotheque-webapp/services/gestionpret?wsdl"><con:part><con:url>http://localhost:8080/bibliotheque-webapp/services/gestionpret?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="GestionPretService" targetNamespace="http://gestionpret.ws.vianney.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gestionpret.ws.vianney.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://gestionpret.ws.vianney.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="addPret" type="tns:addPret"/>
+      <xs:element name="addPretResponse" type="tns:addPretResponse"/>
+      <xs:element name="getListPretByUser" type="tns:getListPretByUser"/>
+      <xs:element name="getListPretByUserResponse" type="tns:getListPretByUserResponse"/>
+      <xs:element name="getPretByID" type="tns:getPretByID"/>
+      <xs:element name="getPretByIDResponse" type="tns:getPretByIDResponse"/>
+      <xs:element name="updatePret" type="tns:updatePret"/>
+      <xs:element name="updatePretResponse" type="tns:updatePretResponse"/>
+      <xs:complexType name="getPretByID">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getPretByIDResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:Pret"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Pret">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="date_debut" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="date_fin" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="ouvrage" type="tns:Ouvrage"/>
+          <xs:element name="prolongation" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="status" type="tns:Status"/>
+          <xs:element minOccurs="0" name="utilisateur" type="tns:Utilisateur"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Ouvrage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="editeur" type="tns:Editeur"/>
+          <xs:element minOccurs="0" name="exemplaire" type="xs:int"/>
+          <xs:element name="ISBN" type="xs:long"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="langue" type="tns:Langue"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="listAuteur" nillable="true" type="tns:Auteur"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="listGenre" nillable="true" type="tns:Genre"/>
+          <xs:element minOccurs="0" name="photos" type="xs:string"/>
+          <xs:element minOccurs="0" name="resume" type="xs:string"/>
+          <xs:element minOccurs="0" name="titre" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Editeur">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Langue">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="code" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="langue" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Auteur">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="prenom" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Genre">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="genre" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Status">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="status" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Utilisateur">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="mail" type="xs:string"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element minOccurs="0" name="prenom" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updatePret">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="pret" type="tns:Pret"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updatePretResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getListPretByUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="utilisateur" type="tns:Utilisateur"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getListPretByUserResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:Pret"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addPret">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="pret" type="tns:Pret"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addPretResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getPretByID">
+    <wsdl:part element="tns:getPretByID" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPretByIDResponse">
+    <wsdl:part element="tns:getPretByIDResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListPretByUser">
+    <wsdl:part element="tns:getListPretByUser" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPret">
+    <wsdl:part element="tns:addPret" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePretResponse">
+    <wsdl:part element="tns:updatePretResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPretResponse">
+    <wsdl:part element="tns:addPretResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePret">
+    <wsdl:part element="tns:updatePret" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListPretByUserResponse">
+    <wsdl:part element="tns:getListPretByUserResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GestionPret">
+    <wsdl:operation name="getPretByID">
+      <wsdl:input message="tns:getPretByID" name="getPretByID"></wsdl:input>
+      <wsdl:output message="tns:getPretByIDResponse" name="getPretByIDResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePret">
+      <wsdl:input message="tns:updatePret" name="updatePret"></wsdl:input>
+      <wsdl:output message="tns:updatePretResponse" name="updatePretResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListPretByUser">
+      <wsdl:input message="tns:getListPretByUser" name="getListPretByUser"></wsdl:input>
+      <wsdl:output message="tns:getListPretByUserResponse" name="getListPretByUserResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPret">
+      <wsdl:input message="tns:addPret" name="addPret"></wsdl:input>
+      <wsdl:output message="tns:addPretResponse" name="addPretResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GestionPretServiceSoapBinding" type="tns:GestionPret">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getPretByID">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPretByID">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPretByIDResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePret">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updatePret">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updatePretResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListPretByUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListPretByUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListPretByUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPret">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addPret">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addPretResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GestionPretService">
+    <wsdl:port binding="tns:GestionPretServiceSoapBinding" name="GestionPretPort">
+      <soap:address location="http://localhost:8080/bibliotheque-webapp/services/gestionpret"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionpret</con:endpoint></con:endpoints><con:operation id="262bff32-bf11-41ef-a02a-08f32b55a096" isOneWay="false" action="" name="addPret" bindingOperationName="addPret" type="Request-Response" outputName="addPretResponse" inputName="addPret" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f98210e2-0ed5-41bc-99c2-89154bd32abc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionpret</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionpret.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:addPret>\r
+         <!--Optional:-->\r
+         <pret>\r
+            <!--Optional:-->\r
+            <date_debut>?</date_debut>\r
+            <!--Optional:-->\r
+            <date_fin>?</date_fin>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <ouvrage>\r
+               <!--Optional:-->\r
+               <editeur>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <nom>?</nom>\r
+               </editeur>\r
+               <!--Optional:-->\r
+               <exemplaire>?</exemplaire>\r
+               <ISBN>?</ISBN>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <langue>\r
+                  <!--Optional:-->\r
+                  <code>?</code>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <langue>?</langue>\r
+               </langue>\r
+               <!--Zero or more repetitions:-->\r
+               <listAuteur>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <nom>?</nom>\r
+                  <!--Optional:-->\r
+                  <prenom>?</prenom>\r
+               </listAuteur>\r
+               <!--Zero or more repetitions:-->\r
+               <listGenre>\r
+                  <!--Optional:-->\r
+                  <genre>?</genre>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+               </listGenre>\r
+               <!--Optional:-->\r
+               <photos>?</photos>\r
+               <!--Optional:-->\r
+               <resume>?</resume>\r
+               <!--Optional:-->\r
+               <titre>?</titre>\r
+            </ouvrage>\r
+            <prolongation>?</prolongation>\r
+            <!--Optional:-->\r
+            <status>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <status>?</status>\r
+            </status>\r
+            <!--Optional:-->\r
+            <utilisateur>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <mail>?</mail>\r
+               <!--Optional:-->\r
+               <nom>?</nom>\r
+               <!--Optional:-->\r
+               <password>?</password>\r
+               <!--Optional:-->\r
+               <prenom>?</prenom>\r
+            </utilisateur>\r
+         </pret>\r
+      </ges:addPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionpret.ws.vianney.com/GestionPret/addPret"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ceeed5ac-afc8-4525-8db6-bd4083b2c830" isOneWay="false" action="" name="getListPretByUser" bindingOperationName="getListPretByUser" type="Request-Response" outputName="getListPretByUserResponse" inputName="getListPretByUser" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9ba2a4bb-1e9d-457c-b542-8137553503dc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionpret</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionpret.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:getListPretByUser>\r
+         <!--Optional:-->\r
+         <utilisateur>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <mail>?</mail>\r
+            <!--Optional:-->\r
+            <nom>?</nom>\r
+            <!--Optional:-->\r
+            <password>?</password>\r
+            <!--Optional:-->\r
+            <prenom>?</prenom>\r
+         </utilisateur>\r
+      </ges:getListPretByUser>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionpret.ws.vianney.com/GestionPret/getListPretByUser"/></con:call></con:operation><con:operation id="94021762-85fa-4cad-9565-46a8e2c22df1" isOneWay="false" action="" name="getPretByID" bindingOperationName="getPretByID" type="Request-Response" outputName="getPretByIDResponse" inputName="getPretByID" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="582024d5-3c05-4d63-8206-2069dfaee9d8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionpret</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionpret.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:getPretByID>\r
+         <!--Optional:-->\r
+         <id>?</id>\r
+      </ges:getPretByID>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionpret.ws.vianney.com/GestionPret/getPretByID"/></con:call></con:operation><con:operation id="55e65b6d-c7a8-4e43-96f0-f6f03dc07d53" isOneWay="false" action="" name="updatePret" bindingOperationName="updatePret" type="Request-Response" outputName="updatePretResponse" inputName="updatePret" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="23d85f67-43dc-448a-91a0-8cefe852de8e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionpret</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionpret.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:updatePret>\r
+         <!--Optional:-->\r
+         <pret>\r
+            <!--Optional:-->\r
+            <date_debut>?</date_debut>\r
+            <!--Optional:-->\r
+            <date_fin>?</date_fin>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <ouvrage>\r
+               <!--Optional:-->\r
+               <editeur>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <nom>?</nom>\r
+               </editeur>\r
+               <!--Optional:-->\r
+               <exemplaire>?</exemplaire>\r
+               <ISBN>?</ISBN>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <langue>\r
+                  <!--Optional:-->\r
+                  <code>?</code>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <langue>?</langue>\r
+               </langue>\r
+               <!--Zero or more repetitions:-->\r
+               <listAuteur>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <nom>?</nom>\r
+                  <!--Optional:-->\r
+                  <prenom>?</prenom>\r
+               </listAuteur>\r
+               <!--Zero or more repetitions:-->\r
+               <listGenre>\r
+                  <!--Optional:-->\r
+                  <genre>?</genre>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+               </listGenre>\r
+               <!--Optional:-->\r
+               <photos>?</photos>\r
+               <!--Optional:-->\r
+               <resume>?</resume>\r
+               <!--Optional:-->\r
+               <titre>?</titre>\r
+            </ouvrage>\r
+            <prolongation>?</prolongation>\r
+            <!--Optional:-->\r
+            <status>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <status>?</status>\r
+            </status>\r
+            <!--Optional:-->\r
+            <utilisateur>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <mail>?</mail>\r
+               <!--Optional:-->\r
+               <nom>?</nom>\r
+               <!--Optional:-->\r
+               <password>?</password>\r
+               <!--Optional:-->\r
+               <prenom>?</prenom>\r
+            </utilisateur>\r
+         </pret>\r
+      </ges:updatePret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionpret.ws.vianney.com/GestionPret/updatePret"/></con:call></con:operation></con:interface><con:testSuite id="cbf53f61-bba7-4f21-97ad-126d99038a68" name="Test Pret"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="1d2accf4-d54d-4f3c-83e1-b7c16b3fd788" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase Pret" searchProperties="true"><con:settings/><con:testStep type="request" id="7e700b3a-b01d-43ff-90ed-da6b3930cb07" name="addPret - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GestionPretServiceSoapBinding</con:interface><con:operation>addPret</con:operation><con:request name="addPret - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="a2b12efb-b0f2-4089-83ea-a11897a90a1f"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionpret</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionpret.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:addPret>\r
+         <!--Optional:-->\r
+         <pret>\r
+            <!--Optional:-->\r
+            <date_debut>?</date_debut>\r
+            <!--Optional:-->\r
+            <date_fin>?</date_fin>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <ouvrage>\r
+               <!--Optional:-->\r
+               <editeur>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <nom>?</nom>\r
+               </editeur>\r
+               <!--Optional:-->\r
+               <exemplaire>?</exemplaire>\r
+               <ISBN>?</ISBN>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <langue>\r
+                  <!--Optional:-->\r
+                  <code>?</code>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <langue>?</langue>\r
+               </langue>\r
+               <!--Zero or more repetitions:-->\r
+               <listAuteur>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <nom>?</nom>\r
+                  <!--Optional:-->\r
+                  <prenom>?</prenom>\r
+               </listAuteur>\r
+               <!--Zero or more repetitions:-->\r
+               <listGenre>\r
+                  <!--Optional:-->\r
+                  <genre>?</genre>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+               </listGenre>\r
+               <!--Optional:-->\r
+               <photos>?</photos>\r
+               <!--Optional:-->\r
+               <resume>?</resume>\r
+               <!--Optional:-->\r
+               <titre>?</titre>\r
+            </ouvrage>\r
+            <prolongation>?</prolongation>\r
+            <!--Optional:-->\r
+            <status>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <status>?</status>\r
+            </status>\r
+            <!--Optional:-->\r
+            <utilisateur>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <mail>?</mail>\r
+               <!--Optional:-->\r
+               <nom>?</nom>\r
+               <!--Optional:-->\r
+               <password>?</password>\r
+               <!--Optional:-->\r
+               <prenom>?</prenom>\r
+            </utilisateur>\r
+         </pret>\r
+      </ges:addPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="de3a75d0-7119-4271-b996-6db6f1185a45" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionpret.ws.vianney.com/GestionPret/addPret"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="525aef1d-e9e5-4ab4-9e53-f6b2f092ad97" name="getListPretByUser - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GestionPretServiceSoapBinding</con:interface><con:operation>getListPretByUser</con:operation><con:request name="getListPretByUser - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="83b3f6dd-31fe-45ca-8f0d-2c8353866e49"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionpret</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionpret.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:getListPretByUser>\r
+         <!--Optional:-->\r
+         <utilisateur>\r
+            <!--Optional:-->\r
+            <id>${#Project#id_user}</id>\r
+            <!--Optional:-->\r
+            <mail>${#Project#mail_user}</mail>\r
+            <!--Optional:-->\r
+            <nom>${#Project#nom_user}</nom>\r
+            <!--Optional:-->\r
+            <password>${#Project#password_user}</password>\r
+            <!--Optional:-->\r
+            <prenom>?</prenom>\r
+         </utilisateur>\r
+      </ges:getListPretByUser>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="b594727e-01ea-4cdf-ba80-fbe59c31b81a" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionpret.ws.vianney.com/GestionPret/getListPretByUser"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="d39058d1-b6d1-4294-b992-ab5541584859" name="getPretByID - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GestionPretServiceSoapBinding</con:interface><con:operation>getPretByID</con:operation><con:request name="getPretByID - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="6d7079a8-e72d-4f96-9e93-2e26cce2d220"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionpret</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionpret.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:getPretByID>\r
+         <!--Optional:-->\r
+         <id>${#Project#id_pret}</id>\r
+      </ges:getPretByID>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="2b5ba2a2-b3e9-41f3-b2ae-a5b38ba53fd7" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionpret.ws.vianney.com/GestionPret/getPretByID"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="a25bda32-4615-464b-a304-d8d00be7b524" name="updatePret - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GestionPretServiceSoapBinding</con:interface><con:operation>updatePret</con:operation><con:request name="updatePret - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="67dfc4e8-b044-4c1f-8fec-11f9ba0dc728"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bibliotheque-webapp/services/gestionpret</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ges="http://gestionpret.ws.vianney.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ges:updatePret>\r
+         <!--Optional:-->\r
+         <pret>\r
+            <!--Optional:-->\r
+            <date_debut>?</date_debut>\r
+            <!--Optional:-->\r
+            <date_fin>?</date_fin>\r
+            <!--Optional:-->\r
+            <id>?</id>\r
+            <!--Optional:-->\r
+            <ouvrage>\r
+               <!--Optional:-->\r
+               <editeur>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <nom>?</nom>\r
+               </editeur>\r
+               <!--Optional:-->\r
+               <exemplaire>?</exemplaire>\r
+               <ISBN>?</ISBN>\r
+               <!--Optional:-->\r
+               <id>?</id>\r
+               <!--Optional:-->\r
+               <langue>\r
+                  <!--Optional:-->\r
+                  <code>?</code>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <langue>?</langue>\r
+               </langue>\r
+               <!--Zero or more repetitions:-->\r
+               <listAuteur>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+                  <!--Optional:-->\r
+                  <nom>?</nom>\r
+                  <!--Optional:-->\r
+                  <prenom>?</prenom>\r
+               </listAuteur>\r
+               <!--Zero or more repetitions:-->\r
+               <listGenre>\r
+                  <!--Optional:-->\r
+                  <genre>?</genre>\r
+                  <!--Optional:-->\r
+                  <id>?</id>\r
+               </listGenre>\r
+               <!--Optional:-->\r
+               <photos>?</photos>\r
+               <!--Optional:-->\r
+               <resume>?</resume>\r
+               <!--Optional:-->\r
+               <titre>?</titre>\r
+            </ouvrage>\r
+            <prolongation>?</prolongation>\r
+            <!--Optional:-->\r
+            <status>\r
+               <!--Optional:-->\r
+               <id>${#Project#status_id}</id>\r
+               <!--Optional:-->\r
+               <status>${#Project#status_status}</status>\r
+            </status>\r
+            <!--Optional:-->\r
+            <utilisateur>\r
+               <!--Optional:-->\r
+               <id>${#Project#id_user}</id>\r
+               <!--Optional:-->\r
+               <mail>${#Project#mail_user}</mail>\r
+               <!--Optional:-->\r
+               <nom>${#Project#nom_user}</nom>\r
+               <!--Optional:-->\r
+               <password>${#Project#password_user}</password>\r
+               <!--Optional:-->\r
+               <prenom>${#Project#prenom_user}</prenom>\r
+            </utilisateur>\r
+         </pret>\r
+      </ges:updatePret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c83aae1e-edba-4d88-965f-49862a3324fa" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://gestionpret.ws.vianney.com/GestionPret/updatePret"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>id_pret</con:name><con:value>12</con:value></con:property><con:property><con:name>id_user</con:name><con:value>6</con:value></con:property><con:property><con:name>nom_user</con:name><con:value>Diris</con:value></con:property><con:property><con:name>prenom_user</con:name><con:value>Vianney</con:value></con:property><con:property><con:name>mail_user</con:name><con:value>vianney.diris@gmail.com</con:value></con:property><con:property><con:name>password_user</con:name><con:value>azerty</con:value></con:property><con:property><con:name>status_id</con:name><con:value>1</con:value></con:property><con:property><con:name>status_status</con:name><con:value>en cours</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
