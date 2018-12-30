@@ -1,13 +1,13 @@
 package org.core.app.model.bean;
 
 import javax.xml.bind.annotation.XmlType;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @XmlType(name = "Reservation")
 public class Reservation {
 
     private Integer id;
-    private LocalDateTime dateReservation;
+    private Date dateReservation;
     private Ouvrage ouvrage;
     private Utilisateur utilisateur;
 
@@ -19,11 +19,11 @@ public class Reservation {
         this.id = id;
     }
 
-    public LocalDateTime getDateReservation() {
+    public Date getDateReservation() {
         return dateReservation;
     }
 
-    public void setDateReservation(LocalDateTime dateReservation) {
+    public void setDateReservation(Date dateReservation) {
         this.dateReservation = dateReservation;
     }
 
