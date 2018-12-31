@@ -31,3 +31,7 @@ Ajout de la table "Reservation" avec comme attribut :
 - Création du webService lié à la Réservation.
 
 ## Annexe
+- Création du bouton "Réserver l'ouvrage".
+- Ajout du mapping Struts lié à celui-ci.
+- Création de la classe d'action "GestionReservationAction".
+- Ajout des méthodes "addReservation" et "deleteReservation".
