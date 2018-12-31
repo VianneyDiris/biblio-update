@@ -38,3 +38,4 @@ Ajout de la table "Reservation" avec comme attribut :
 
 ## Batch
 - Création du Spring Batch Réservation.
+- Boucle toutes les 2
