@@ -21,7 +21,13 @@ Ajout de la table "Reservation" avec comme attribut :
 
 
 ## Bibliotheque
-
-
+- Création du bean "Reservation".
+- Création des interfaces "ReservationDao" et "ReservationManager".
+- Création du rowmapper "ReservationRM".
+- Ajout de la méthode "getReservationDao" dans l'interface "DaoFactory" et de la méthode "getReservationManager" dans l'interface "ManagerFactory".
+- Création des implémentations des interfaces "ReservationDao" et "ReservationManager".
+- Ajout des getter/setter dans l'implémentation des interfaces "DaoFactory" et "ManagerFactory".
+- Ajout des beans dans les fichiers XML de Spring.
+- Création du webService lié à la Réservation.
 
 ## Annexe
