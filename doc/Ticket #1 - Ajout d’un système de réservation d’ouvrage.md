@@ -35,3 +35,6 @@ Ajout de la table "Reservation" avec comme attribut :
 - Ajout du mapping Struts lié à celui-ci.
 - Création de la classe d'action "GestionReservationAction".
 - Ajout des méthodes "addReservation" et "deleteReservation".
+
+## Batch
+- Création du Spring Batch Réservation.
