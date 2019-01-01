@@ -100,7 +100,7 @@
   </wsdl:binding>
   <wsdl:service name="GestionUserService">
     <wsdl:port binding="tns:GestionUserServiceSoapBinding" name="GestionUserPort">
-      <soap:address location="http://localhost:8080/bibliotheque-webapp/services/gestionuser"/>
+      <soap:address location="http://localhost:8080/services/gestionuser"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
