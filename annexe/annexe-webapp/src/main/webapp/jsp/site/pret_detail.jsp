@@ -37,8 +37,8 @@
 									Date de fin:
 									<s:date name="dateFinReservation" format="dd/MM/yyyy"/>
 								</p>
-								<s:if test="pret.prolongation">
-									<p>prolongation déjà effectué</p>
+								<s:if test="pret.prolongation || prolongationAfterPret">
+									<p>prolongation impossible</p>
 								</s:if>
 								<s:else>
 									<s:a action="prolongation"><s:param value="pret.id" name="id"/><button class="btn btn-default">prolonger l'emprunt</button></s:a>
