@@ -50,6 +50,7 @@ public class GestionPretAction extends ActionSupport implements SessionAware{
 	private List<Pret> listPret;
 	private Date dateReservation;
 	private Date dateFinReservation;
+	private boolean prolongationAfterPret;
 
 	// ==================== Getters/Setters ====================
 	public Utilisateur getUser() {
@@ -119,6 +120,14 @@ public class GestionPretAction extends ActionSupport implements SessionAware{
 		this.dureePret = dureePret;
 	}
 
+	public boolean isProlongationAfterPret() {
+		return prolongationAfterPret;
+	}
+
+	public void setProlongationAfterPret(boolean prolongationAfterPret) {
+		this.prolongationAfterPret = prolongationAfterPret;
+	}
+
 	// ==================== Méthodes ====================
 	public String doAddPret() {
 		ConvertUser userConvert = new ConvertUser();
@@ -183,13 +192,18 @@ public class GestionPretAction extends ActionSupport implements SessionAware{
 	public String doPretDetail() {
 		GestionPretService servicePret = new GestionPretService();
 		GestionPret pretService = servicePret.getGestionPretPort();
-		
+
 		pret = pretService.getPretByID(id); 
 		XMLGregorianCalendar xCal = pret.getDateFin();
 		dateFinReservation = xCal.toGregorianCalendar().getTime();
 		XMLGregorianCalendar xCal2 = pret.getDateDebut();
 		dateReservation = xCal2.toGregorianCalendar().getTime();
-		
+		prolongationAfterPret=false;
+		Date dateDuJour = new Date();
+		if (dateFinReservation.compareTo(dateDuJour)<0){
+			prolongationAfterPret=true;
+		}
+
 		
 		return ActionSupport.SUCCESS;
 		
