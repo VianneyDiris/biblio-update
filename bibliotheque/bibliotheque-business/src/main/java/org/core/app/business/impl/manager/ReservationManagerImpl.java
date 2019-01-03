@@ -4,6 +4,7 @@ import org.core.app.business.contract.manager.ReservationManager;
 import org.core.app.business.impl.AbstractManagerImpl;
 import org.core.app.model.bean.Ouvrage;
 import org.core.app.model.bean.Reservation;
+import org.core.app.model.bean.Utilisateur;
 import org.core.app.model.exception.NotFoundException;
 
 import java.util.List;
@@ -22,6 +23,11 @@ public class ReservationManagerImpl extends AbstractManagerImpl implements Reser
     @Override
     public List<Reservation> searchReservationByOuvrage(Ouvrage ouvrage) throws NotFoundException {
         return getDaoFactory().getReservationDao().searchReservationByOuvrage(ouvrage);
+    }
+
+    @Override
+    public List<Reservation> searchReservationByUtilisateur(Utilisateur utilisateur) throws NotFoundException {
+        return getDaoFactory().getReservationDao().searchReservationByUtilisateur(utilisateur);
     }
 
     @Override

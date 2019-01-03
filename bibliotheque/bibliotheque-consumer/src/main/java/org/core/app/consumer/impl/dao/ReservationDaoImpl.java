@@ -5,6 +5,7 @@ import org.core.app.consumer.impl.AbstractDaoImpl;
 import org.core.app.consumer.impl.rowmapper.ReservationRM;
 import org.core.app.model.bean.Ouvrage;
 import org.core.app.model.bean.Reservation;
+import org.core.app.model.bean.Utilisateur;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
@@ -39,6 +40,18 @@ public class ReservationDaoImpl extends AbstractDaoImpl implements ReservationDa
         ReservationRM rowReservation = new ReservationRM();
 
         List<Reservation> listReservation = vJdbcTemplate.query(vsql, new Object[] { ouvrage.getId() },rowReservation);
+
+        return listReservation;
+    }
+
+    @Override
+    public List<Reservation> searchReservationByUtilisateur(Utilisateur utilisateur) {
+        String vsql="SELECT * FROM public.reservation WHERE utilisateur_id=?";
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        ReservationRM rowReservation = new ReservationRM();
+
+        List<Reservation> listReservation = vJdbcTemplate.query(vsql, new Object[] { utilisateur.getId() },rowReservation);
 
         return listReservation;
     }
