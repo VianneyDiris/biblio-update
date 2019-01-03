@@ -16,6 +16,7 @@
 	</bean>
 	<bean id="statusManager" class="org.core.app.business.impl.manager.StatusManagerImpl"/>
 	<bean id="utilisateurManager" class="org.core.app.business.impl.manager.UtilisateurManagerImpl"/>
+	<bean id="reservationManager" class="org.core.app.business.impl.manager.ReservationManagerImpl"/>
 
 
 	<!-- ===== ManagerFactory ===== -->
@@ -28,7 +29,7 @@
 		<property name="pretManager" ref="pretManager" />
 		<property name="statusManager" ref="statusManager" />
 		<property name="utilisateurManager" ref="utilisateurManager" />
-		
+		<property name="reservationManager" ref="reservationManager"/>
 	</bean>
 
 	<!-- ==== AbstractManager ===== -->
