@@ -37,5 +37,4 @@ Ajout de la table "Reservation" avec comme attribut :
 - Ajout des méthodes "addReservation" et "deleteReservation".
 
 ## Batch
-- Création du Spring Batch Réservation.
-- Boucle toutes les 2
+- No update
