@@ -14,6 +14,7 @@
     <bean id="pretDao" class="org.core.app.consumer.impl.dao.PretDaoImpl"/>
     <bean id="statusDao" class="org.core.app.consumer.impl.dao.StatusDaoImpl"/>
     <bean id="utilisateurDao" class="org.core.app.consumer.impl.dao.UtilisateurDaoImpl"/>
+    <bean id="reservationDao" class="org.core.app.consumer.impl.dao.ReservationDaoImpl"/>
     
     
 
@@ -27,6 +28,7 @@
         <property name="pretDao" ref="pretDao"/>
         <property name="statusDao" ref="statusDao"/>
         <property name="utilisateurDao" ref="utilisateurDao"/>
+        <property name="reservationDao" ref="reservationDao"/>
      </bean>
     
 
