@@ -1,3 +1,4 @@
+org\core\app\model\bean\Reservation.class
 org\core\app\model\bean\Ouvrage.class
 org\core\app\model\bean\Genre.class
 org\core\app\model\bean\Status.class

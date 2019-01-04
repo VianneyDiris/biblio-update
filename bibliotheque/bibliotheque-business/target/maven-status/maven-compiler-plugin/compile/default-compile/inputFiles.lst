@@ -1,3 +1,4 @@
+C:\Users\vianney\Documents\openclassrooms\projet\Améliorez le système d’information de la bibliothèque\biblio-update\bibliotheque\bibliotheque-business\src\main\java\org\core\app\business\contract\manager\ReservationManager.java
 C:\Users\vianney\Documents\openclassrooms\projet\Améliorez le système d’information de la bibliothèque\biblio-update\bibliotheque\bibliotheque-business\src\main\java\org\core\app\business\contract\manager\AuteurManager.java
 C:\Users\vianney\Documents\openclassrooms\projet\Améliorez le système d’information de la bibliothèque\biblio-update\bibliotheque\bibliotheque-business\src\main\java\org\core\app\business\contract\manager\PretManager.java
 C:\Users\vianney\Documents\openclassrooms\projet\Améliorez le système d’information de la bibliothèque\biblio-update\bibliotheque\bibliotheque-business\src\main\java\org\core\app\business\contract\manager\GenreManager.java
@@ -9,6 +10,7 @@ C:\Users\vianney\Documents\openclassrooms\projet\Améliorez le système d’informat
 C:\Users\vianney\Documents\openclassrooms\projet\Améliorez le système d’information de la bibliothèque\biblio-update\bibliotheque\bibliotheque-business\src\main\java\org\core\app\business\contract\manager\OuvrageManager.java
 C:\Users\vianney\Documents\openclassrooms\projet\Améliorez le système d’information de la bibliothèque\biblio-update\bibliotheque\bibliotheque-business\src\main\java\org\core\app\business\impl\manager\PretManagerImpl.java
 C:\Users\vianney\Documents\openclassrooms\projet\Améliorez le système d’information de la bibliothèque\biblio-update\bibliotheque\bibliotheque-business\src\main\java\org\core\app\business\impl\manager\LangueManagerImpl.java
+C:\Users\vianney\Documents\openclassrooms\projet\Améliorez le système d’information de la bibliothèque\biblio-update\bibliotheque\bibliotheque-business\src\main\java\org\core\app\business\impl\manager\ReservationManagerImpl.java
 C:\Users\vianney\Documents\openclassrooms\projet\Améliorez le système d’information de la bibliothèque\biblio-update\bibliotheque\bibliotheque-business\src\main\java\org\core\app\business\contract\manager\LangueManager.java
 C:\Users\vianney\Documents\openclassrooms\projet\Améliorez le système d’information de la bibliothèque\biblio-update\bibliotheque\bibliotheque-business\src\main\java\org\core\app\business\impl\manager\OuvrageManagerImpl.java
 C:\Users\vianney\Documents\openclassrooms\projet\Améliorez le système d’information de la bibliothèque\biblio-update\bibliotheque\bibliotheque-business\src\main\java\org\core\app\business\contract\ManagerFactory.java

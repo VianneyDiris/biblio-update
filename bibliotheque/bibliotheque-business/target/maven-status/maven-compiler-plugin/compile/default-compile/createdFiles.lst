@@ -1,3 +1,4 @@
+org\core\app\business\contract\manager\ReservationManager.class
 org\core\app\business\impl\manager\PretManagerImpl.class
 org\core\app\business\impl\ManagerFactoryImpl.class
 org\core\app\business\contract\manager\OuvrageManager.class
@@ -9,6 +10,7 @@ org\core\app\business\impl\AbstractManagerImpl.class
 org\core\app\business\contract\manager\PretManager.class
 org\core\app\business\contract\manager\StatusManager.class
 org\core\app\business\impl\manager\UtilisateurManagerImpl.class
+org\core\app\business\impl\manager\ReservationManagerImpl.class
 org\core\app\business\impl\manager\AuteurManagerImpl.class
 org\core\app\business\contract\manager\AuteurManager.class
 org\core\app\business\contract\ManagerFactory.class

@@ -6,12 +6,15 @@ org\core\app\consumer\impl\dao\EditeurDaoImpl.class
 org\core\app\consumer\impl\rowmapper\GenreRM.class
 org\core\app\consumer\impl\dao\PretDaoImpl.class
 org\core\app\consumer\impl\dao\GenreDaoImpl.class
+org\core\app\consumer\impl\rowmapper\ReservationRM.class
 org\core\app\consumer\impl\rowmapper\OuvrageRM.class
+org\core\app\consumer\impl\dao\ReservationDaoImpl.class
 org\core\app\consumer\contract\GenreDao.class
 org\core\app\consumer\impl\rowmapper\AuteurRM.class
 org\core\app\consumer\impl\rowmapper\StatusRM.class
 org\core\app\consumer\impl\rowmapper\UtilisateurRM.class
 org\core\app\consumer\impl\dao\LangueDaoImpl.class
+org\core\app\consumer\contract\ReservationDao.class
 org\core\app\consumer\contract\OuvrageDao.class
 org\core\app\consumer\contract\StatusDao.class
 org\core\app\consumer\impl\rowmapper\LangueRM.class
