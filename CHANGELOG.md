@@ -1,6 +1,7 @@
 # Unreleased
 ## added
 
+[Ticket 3] (doc/Ticket #3 - Créer un batch de rappel des prêts arrivant bientôt à expiration.md)
 ## changed
 
 ## fixed
