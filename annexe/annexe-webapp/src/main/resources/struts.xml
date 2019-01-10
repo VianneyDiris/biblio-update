@@ -68,5 +68,15 @@
 			<result type="redirectAction">pret</result>
 		</action>
 
+		<!-- Action "reservation" -->
+		<action name="reservation" class="org.annexe.app.webapp.action.GestionReservationAction" method="doListReservation">
+			<result name="success">jsp/site/reservation.jsp</result>
+		</action>
+
+		<!-- Action "addReservation" -->
+		<action name="addReservation" class="org.annexe.app.webapp.action.GestionReservationAction" method="doAddReservation">
+			<result type="redirectAction">reservation</result>
+		</action>
+
 	</package>
 </struts>

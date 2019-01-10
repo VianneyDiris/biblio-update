@@ -57,7 +57,14 @@
 								</s:iterator>
 
 								<p></p>
-								<s:a action="addPret"><s:param value="ouvrage.id" name="id"/><button class="btn btn-default">Emprunter cet ouvrage</button></s:a>
+								<s:if test="reservation">
+									<p>Impossible d'emprunter cette ouvrage. Vous pouvez le réserver.</p>
+									<s:a action="addReservation"><s:param value="ouvrage.id" name="id"/><button class="btn btn-default">Réserver cet ouvrage</button></s:a>
+								</s:if>
+								<s:else>
+									<s:a action="addPret"><s:param value="ouvrage.id" name="id"/><button class="btn btn-default">Emprunter cet ouvrage</button></s:a>
+								</s:else>
+
 							</div>
 						</div>
 					</div>

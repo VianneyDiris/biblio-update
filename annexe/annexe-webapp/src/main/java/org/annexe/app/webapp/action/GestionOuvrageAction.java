@@ -9,6 +9,7 @@ import com.vianney.ws.gestionouvrage.Ouvrage;
 import com.vianney.ws.gestionpret.GestionPret;
 import com.vianney.ws.gestionpret.GestionPretService;
 import com.vianney.ws.gestionpret.Pret;
+import org.annexe.app.webapp.convert.ConvertOuvrage;
 
 @SuppressWarnings("serial")
 public class GestionOuvrageAction extends ActionSupport{
@@ -68,13 +69,23 @@ public class GestionOuvrageAction extends ActionSupport{
 		GestionOuvrage ouvrageService = serviceOuvrage.getGestionOuvragePort();
 		
 		ouvrage = ouvrageService.getOuvrageByID(id);
-
+		reservation=false;
 
 		GestionPretService servicePret = new GestionPretService();
 		GestionPret pretService = servicePret.getGestionPretPort();
+		ConvertOuvrage convert = new ConvertOuvrage();
+		List<Pret> listPret = pretService.getListPretByOuvrage(convert.ouvrageToOuvragePret(ouvrage));
 
-		Pret pret = pretService.getPretByID(id);
+		int pretEnCours = 0;
+		for(Pret pret :listPret){
+			if(pret.getStatus().getId()==1){
+				pretEnCours+=1;
+			}
+		}
 
+		if (pretEnCours==ouvrage.getExemplaire()){
+			reservation=true;
+		}
 
 		return ActionSupport.SUCCESS;
 	}
