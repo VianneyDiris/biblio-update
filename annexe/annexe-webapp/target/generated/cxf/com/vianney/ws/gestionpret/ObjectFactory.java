@@ -26,6 +26,8 @@ public class ObjectFactory {
 
     private final static QName _AddPret_QNAME = new QName("http://gestionpret.ws.vianney.com/", "addPret");
     private final static QName _AddPretResponse_QNAME = new QName("http://gestionpret.ws.vianney.com/", "addPretResponse");
+    private final static QName _GetListPretByOuvrage_QNAME = new QName("http://gestionpret.ws.vianney.com/", "getListPretByOuvrage");
+    private final static QName _GetListPretByOuvrageResponse_QNAME = new QName("http://gestionpret.ws.vianney.com/", "getListPretByOuvrageResponse");
     private final static QName _GetListPretByUser_QNAME = new QName("http://gestionpret.ws.vianney.com/", "getListPretByUser");
     private final static QName _GetListPretByUserResponse_QNAME = new QName("http://gestionpret.ws.vianney.com/", "getListPretByUserResponse");
     private final static QName _GetPretByID_QNAME = new QName("http://gestionpret.ws.vianney.com/", "getPretByID");
@@ -54,6 +56,22 @@ public class ObjectFactory {
      */
     public AddPretResponse createAddPretResponse() {
         return new AddPretResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetListPretByOuvrage }
+     * 
+     */
+    public GetListPretByOuvrage createGetListPretByOuvrage() {
+        return new GetListPretByOuvrage();
+    }
+
+    /**
+     * Create an instance of {@link GetListPretByOuvrageResponse }
+     * 
+     */
+    public GetListPretByOuvrageResponse createGetListPretByOuvrageResponse() {
+        return new GetListPretByOuvrageResponse();
     }
 
     /**
@@ -184,6 +202,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://gestionpret.ws.vianney.com/", name = "addPretResponse")
     public JAXBElement<AddPretResponse> createAddPretResponse(AddPretResponse value) {
         return new JAXBElement<AddPretResponse>(_AddPretResponse_QNAME, AddPretResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListPretByOuvrage }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://gestionpret.ws.vianney.com/", name = "getListPretByOuvrage")
+    public JAXBElement<GetListPretByOuvrage> createGetListPretByOuvrage(GetListPretByOuvrage value) {
+        return new JAXBElement<GetListPretByOuvrage>(_GetListPretByOuvrage_QNAME, GetListPretByOuvrage.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListPretByOuvrageResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://gestionpret.ws.vianney.com/", name = "getListPretByOuvrageResponse")
+    public JAXBElement<GetListPretByOuvrageResponse> createGetListPretByOuvrageResponse(GetListPretByOuvrageResponse value) {
+        return new JAXBElement<GetListPretByOuvrageResponse>(_GetListPretByOuvrageResponse_QNAME, GetListPretByOuvrageResponse.class, null, value);
     }
 
     /**

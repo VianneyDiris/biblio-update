@@ -6,6 +6,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.vianney.ws.gestionouvrage.GestionOuvrage;
 import com.vianney.ws.gestionouvrage.GestionOuvrageService;
 import com.vianney.ws.gestionouvrage.Ouvrage;
+import com.vianney.ws.gestionpret.GestionPret;
+import com.vianney.ws.gestionpret.GestionPretService;
+import com.vianney.ws.gestionpret.Pret;
 
 @SuppressWarnings("serial")
 public class GestionOuvrageAction extends ActionSupport{
@@ -16,6 +19,7 @@ public class GestionOuvrageAction extends ActionSupport{
 	// ----- Paramètres en sortie
 	private List<Ouvrage> listOuvrage;
 	private Ouvrage ouvrage;
+	private boolean reservation;
 	
 	// ==================== Getters/Setters ====================
 	public Ouvrage getOuvrage() {
@@ -42,6 +46,14 @@ public class GestionOuvrageAction extends ActionSupport{
 		this.id = id;
 	}
 
+	public boolean isReservation() {
+		return reservation;
+	}
+
+	public void setReservation(boolean reservation) {
+		this.reservation = reservation;
+	}
+
 	// ==================== Méthodes ====================
 	public String doListOuvrage(){
 		GestionOuvrageService serviceOuvrage = new GestionOuvrageService();
@@ -56,8 +68,14 @@ public class GestionOuvrageAction extends ActionSupport{
 		GestionOuvrage ouvrageService = serviceOuvrage.getGestionOuvragePort();
 		
 		ouvrage = ouvrageService.getOuvrageByID(id);
-		
-		
+
+
+		GestionPretService servicePret = new GestionPretService();
+		GestionPret pretService = servicePret.getGestionPretPort();
+
+		Pret pret = pretService.getPretByID(id);
+
+
 		return ActionSupport.SUCCESS;
 	}
 	
