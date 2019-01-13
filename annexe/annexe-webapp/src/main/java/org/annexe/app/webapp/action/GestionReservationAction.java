@@ -1,12 +1,25 @@
 package org.annexe.app.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.vianney.ws.gestionouvrage.Ouvrage;
+import com.vianney.ws.gestionouvrage.GestionOuvrage;
+import com.vianney.ws.gestionouvrage.GestionOuvrageService;
+import com.vianney.ws.gestionreservation.GestionReservation;
+import com.vianney.ws.gestionreservation.GestionReservationService;
+import com.vianney.ws.gestionreservation.Ouvrage;
 import com.vianney.ws.gestionreservation.Reservation;
 import com.vianney.ws.gestionreservation.Utilisateur;
+import org.annexe.app.webapp.convert.ConvertOuvrage;
 import org.annexe.app.webapp.convert.ConvertUser;
 import org.apache.struts2.interceptor.SessionAware;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
@@ -73,6 +86,32 @@ public class GestionReservationAction extends ActionSupport implements SessionAw
         com.vianney.ws.gestionuser.Utilisateur utilisateur = new com.vianney.ws.gestionuser.Utilisateur();
         utilisateur=(com.vianney.ws.gestionuser.Utilisateur) session.get("user");
         user = userConvert.utilisateurToUtilisateurReservation(utilisateur);
+
+        GestionOuvrageService serviceOuvrage = new GestionOuvrageService();
+        GestionOuvrage ouvrageService = serviceOuvrage.getGestionOuvragePort();
+
+        ConvertOuvrage convert = new ConvertOuvrage();
+        ouvrage = convert.ouvrageToOuvrageReservation(ouvrageService.getOuvrageByID(id));
+
+        LocalDateTime currentTime = LocalDateTime.now();
+        LocalDate date = currentTime.toLocalDate();
+        GregorianCalendar gcal = GregorianCalendar.from(date.atStartOfDay(ZoneId.systemDefault()));
+        XMLGregorianCalendar dateReservation = null;
+        try {
+            dateReservation = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+        } catch (DatatypeConfigurationException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        Reservation addReserv = new Reservation();
+        addReserv.setDateReservation(dateReservation);
+        addReserv.setOuvrage(ouvrage);
+        addReserv.setUtilisateur(user);
+
+        GestionReservationService serviceReservation = new GestionReservationService();
+        GestionReservation reservationService = serviceReservation.getGestionReservationPort();
+
+        reservationService.addReservation(addReserv);
 
         return ActionSupport.SUCCESS;
     }

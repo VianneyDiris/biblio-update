@@ -71,7 +71,9 @@
 				</div>
 			</div>
 		</fieldset>
+<div>
 
+</div>
 	</div>
 	<%@include file="../_include/footer.jsp"%>
 </body>
