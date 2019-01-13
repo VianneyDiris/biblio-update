@@ -19,7 +19,7 @@
 
     <fieldset>
         <legend class="text-center">Réservation fini</legend>
-       
+
     </fieldset>
 
 </div>

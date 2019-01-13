@@ -3,13 +3,16 @@ package org.annexe.app.webapp.action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.vianney.ws.gestionouvrage.Ouvrage;
 import com.vianney.ws.gestionreservation.Reservation;
+import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.List;
+import java.util.Map;
 
-public class GestionReservationAction extends ActionSupport {
+public class GestionReservationAction extends ActionSupport implements SessionAware {
     // ==================== Attributs ====================
     // ----- Paramètres en entrée
     private Integer id;
+    private Map<String, Object> session;
 
     // ----- Paramètres en sortie
     private Ouvrage ouvrage;
@@ -39,6 +42,13 @@ public class GestionReservationAction extends ActionSupport {
 
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
+    }
+    public Map<String, Object> getSession() {
+        return session;
+    }
+    public void setSession(Map<String, Object> pSession) {
+        // TODO Auto-generated method stub
+        this.session=pSession;
     }
 
     // ==================== Méthodes ====================
