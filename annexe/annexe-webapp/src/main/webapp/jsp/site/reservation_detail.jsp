@@ -35,7 +35,7 @@
                             </p>
                             <p class="langue">
                                 Position sur la liste d'attente:
-                                indéterminé
+                                <s:property value="position"/>
                             </p>
                             <p></p>
                             <s:a action="endReservation"><s:param value="reservation.id" name="id"/><button class="btn btn-default">Annuler la réservation</button></s:a>

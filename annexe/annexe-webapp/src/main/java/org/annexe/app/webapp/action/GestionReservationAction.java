@@ -34,7 +34,8 @@ public class GestionReservationAction extends ActionSupport implements SessionAw
     private Ouvrage ouvrage;
     private Reservation reservation;
     private List<Reservation> reservationList;
-    private  Date dateFinReservation;
+    private Date dateFinReservation;
+    private int position;
 
     // ==================== Getters/Setters ====================
 
@@ -91,6 +92,14 @@ public class GestionReservationAction extends ActionSupport implements SessionAw
 
     public void setDateFinReservation(Date dateFinReservation) {
         this.dateFinReservation = dateFinReservation;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     // ==================== Méthodes ====================
@@ -150,6 +159,16 @@ public class GestionReservationAction extends ActionSupport implements SessionAw
         reservation = reservationService.find(id);
         XMLGregorianCalendar xCal = reservation.getDateReservation();
         dateFinReservation = xCal.toGregorianCalendar().getTime();
+
+        List<Reservation> list =reservationService.searchReservationByOuvrage(reservation.getOuvrage());
+        position = 1;
+        for (Reservation tempReservation : list){
+            xCal = tempReservation.getDateReservation();
+            Date date = xCal.toGregorianCalendar().getTime();
+            if(date.compareTo(dateFinReservation)<0){
+                position+=1;
+            }
+        }
 
         return ActionSupport.SUCCESS;
     }
