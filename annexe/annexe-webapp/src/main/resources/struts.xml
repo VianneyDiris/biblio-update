@@ -82,5 +82,9 @@
 			<result name="success">jsp/site/reservation_detail.jsp</result>
 		</action>
 
+		<action name="endReservation" class="org.annexe.app.webapp.action.GestionReservationAction" method="doEndReservation">
+			<result type="redirectAction">reservation</result>
+		</action>
+
 	</package>
 </struts>

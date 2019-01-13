@@ -172,4 +172,14 @@ public class GestionReservationAction extends ActionSupport implements SessionAw
 
         return ActionSupport.SUCCESS;
     }
+
+    public String doEndReservation(){
+        GestionReservationService serviceReservation = new GestionReservationService();
+        GestionReservation reservationService = serviceReservation.getGestionReservationPort();
+        reservation = reservationService.find(id);
+
+        reservationService.deleteReservation(reservation);
+
+        return ActionSupport.SUCCESS;
+    }
 }
