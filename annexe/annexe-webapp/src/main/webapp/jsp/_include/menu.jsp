@@ -16,6 +16,7 @@
 			<s:if test="#session.user">
 					<li><s:a action="ouvrage">Ouvrage</s:a></li>
 					<li><s:a action="pret">Pret</s:a></li>
+					<li><s:a action="reservation">Reservation</s:a></li>
 			</s:if>
 			<s:else>
 			<li><s:a action="login">Connexion</s:a></li>
@@ -29,7 +30,7 @@
 					<li><s:a>
 							<s:property value="#session.user.nom" />
 						</s:a></li>
-					<li><s:a action="logout">Déconnexion</s:a></li>
+					<li><s:a action="logout">Dï¿½connexion</s:a></li>
 				</s:if>
 			</ul>
 		</div>

@@ -33,6 +33,8 @@ public class GestionReservationAction extends ActionSupport implements SessionAw
     // ----- Paramètres en sortie
     private Ouvrage ouvrage;
     private Reservation reservation;
+    private List<Reservation> reservationList;
+    private  Date dateFinReservation;
 
     // ==================== Getters/Setters ====================
 
@@ -75,8 +77,33 @@ public class GestionReservationAction extends ActionSupport implements SessionAw
         this.user = user;
     }
 
+    public List<Reservation> getReservationList() {
+        return reservationList;
+    }
+
+    public void setReservationList(List<Reservation> reservationList) {
+        this.reservationList = reservationList;
+    }
+
+    public Date getDateFinReservation() {
+        return dateFinReservation;
+    }
+
+    public void setDateFinReservation(Date dateFinReservation) {
+        this.dateFinReservation = dateFinReservation;
+    }
+
     // ==================== Méthodes ====================
     public String doListReservation(){
+        ConvertUser userConvert = new ConvertUser();
+        com.vianney.ws.gestionuser.Utilisateur utilisateur = new com.vianney.ws.gestionuser.Utilisateur();
+        utilisateur=(com.vianney.ws.gestionuser.Utilisateur) session.get("user");
+        user = userConvert.utilisateurToUtilisateurReservation(utilisateur);
+
+        GestionReservationService serviceReservation = new GestionReservationService();
+        GestionReservation reservationService = serviceReservation.getGestionReservationPort();
+
+        reservationList = reservationService.searchReservationByUtilisateur(user);
 
         return ActionSupport.SUCCESS;
     }
@@ -112,6 +139,17 @@ public class GestionReservationAction extends ActionSupport implements SessionAw
         GestionReservation reservationService = serviceReservation.getGestionReservationPort();
 
         reservationService.addReservation(addReserv);
+
+        return ActionSupport.SUCCESS;
+    }
+
+    public String doReservationDetail(){
+        GestionReservationService serviceReservation = new GestionReservationService();
+        GestionReservation reservationService = serviceReservation.getGestionReservationPort();
+
+        reservation = reservationService.find(id);
+        XMLGregorianCalendar xCal = reservation.getDateReservation();
+        dateFinReservation = xCal.toGregorianCalendar().getTime();
 
         return ActionSupport.SUCCESS;
     }
