@@ -3,6 +3,8 @@ package org.annexe.app.webapp.action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.vianney.ws.gestionouvrage.Ouvrage;
 import com.vianney.ws.gestionreservation.Reservation;
+import com.vianney.ws.gestionreservation.Utilisateur;
+import org.annexe.app.webapp.convert.ConvertUser;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.List;
@@ -13,6 +15,7 @@ public class GestionReservationAction extends ActionSupport implements SessionAw
     // ----- Paramètres en entrée
     private Integer id;
     private Map<String, Object> session;
+    private Utilisateur user;
 
     // ----- Paramètres en sortie
     private Ouvrage ouvrage;
@@ -51,6 +54,14 @@ public class GestionReservationAction extends ActionSupport implements SessionAw
         this.session=pSession;
     }
 
+    public Utilisateur getUser() {
+        return user;
+    }
+
+    public void setUser(Utilisateur user) {
+        this.user = user;
+    }
+
     // ==================== Méthodes ====================
     public String doListReservation(){
 
@@ -58,6 +69,10 @@ public class GestionReservationAction extends ActionSupport implements SessionAw
     }
 
     public String doAddReservation(){
+        ConvertUser userConvert = new ConvertUser();
+        com.vianney.ws.gestionuser.Utilisateur utilisateur = new com.vianney.ws.gestionuser.Utilisateur();
+        utilisateur=(com.vianney.ws.gestionuser.Utilisateur) session.get("user");
+        user = userConvert.utilisateurToUtilisateurReservation(utilisateur);
 
         return ActionSupport.SUCCESS;
     }
