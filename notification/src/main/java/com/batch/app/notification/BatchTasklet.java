@@ -25,14 +25,10 @@ public class BatchTasklet implements Tasklet {
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         System.out.println(message);
 
-        System.out.println(test);
-
         GestionReservationService serviceReservation = new GestionReservationService();
         GestionReservation gestionReservation = serviceReservation.getGestionReservationPort();
 
         List<Reservation> reservationList = gestionReservation.listReservation();
-
-        System.out.println(reservationList);
 
         for(Reservation tempReservation :reservationList){
             test.testFinReservation(tempReservation);

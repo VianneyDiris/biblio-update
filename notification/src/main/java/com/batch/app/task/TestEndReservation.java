@@ -30,9 +30,6 @@ public class TestEndReservation {
                 gestionReservation.deleteReservation(reservation);
             }
 
-            System.out.println("date = "+date.getTime());
-            System.out.println("dateNow = "+dateNow.getTime());
-
         }
     }
 }
