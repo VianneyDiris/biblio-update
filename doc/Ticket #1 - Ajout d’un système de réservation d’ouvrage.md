@@ -37,4 +37,4 @@ Ajout de la table "Reservation" avec comme attribut :
 - Ajout des méthodes "addReservation" et "deleteReservation".
 
 ## Batch
-- No update
+- Ajout d'un batch pour les notifications
