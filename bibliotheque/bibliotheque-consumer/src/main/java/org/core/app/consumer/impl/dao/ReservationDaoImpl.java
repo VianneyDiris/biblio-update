@@ -66,9 +66,9 @@ public class ReservationDaoImpl extends AbstractDaoImpl implements ReservationDa
 
     @Override
     public void updateReservation(Reservation reservation) {
-        String vSQL = "UPDATE public.reservation SET utilisateur_id =?, ouvrage_id=?, date_reservation=? WHERE id = ?";
+        String vSQL = "UPDATE public.reservation SET utilisateur_id =?, ouvrage_id=?, date_reservation=?,notification=?, date_notification=? WHERE id = ?";
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-        vJdbcTemplate.update(vSQL,reservation.getUtilisateur().getId(),reservation.getOuvrage().getId(),reservation.getDateReservation(),reservation.getId());
+        vJdbcTemplate.update(vSQL,reservation.getUtilisateur().getId(),reservation.getOuvrage().getId(),reservation.getDateReservation(),reservation.isNotification(),reservation.getDateNotification(),reservation.getId());
     }
 
     @Override
