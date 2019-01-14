@@ -54,7 +54,7 @@
 
     <build>
         <plugins>
-           <!-- placer les plugins ici
+           <!-- placer les plugins ici -->
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
@@ -67,7 +67,10 @@
                             <sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>${basedir}/src/main/resources/wsdl/gestionrelance.wsdl</wsdl>
+                                    <wsdl>${basedir}/src/main/resources/wsdl/gestionpret.wsdl</wsdl>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/wsdl/gestionreservation.wsdl</wsdl>
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>
@@ -78,7 +81,7 @@
                 </executions>
             </plugin>
 
--->
+
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
