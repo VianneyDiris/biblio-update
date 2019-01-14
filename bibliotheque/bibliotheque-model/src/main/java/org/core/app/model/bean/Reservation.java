@@ -10,6 +10,8 @@ public class Reservation {
     private Date dateReservation;
     private Ouvrage ouvrage;
     private Utilisateur utilisateur;
+    private boolean notification;
+    private Date dateNotification;
 
     public Integer getId() {
         return id;
@@ -41,5 +43,21 @@ public class Reservation {
 
     public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
+    }
+
+    public boolean isNotification() {
+        return notification;
+    }
+
+    public void setNotification(boolean notification) {
+        this.notification = notification;
+    }
+
+    public Date getDateNotification() {
+        return dateNotification;
+    }
+
+    public void setDateNotification(Date dateNotification) {
+        this.dateNotification = dateNotification;
     }
 }

@@ -26,6 +26,8 @@ public class ReservationRM implements RowMapper<Reservation> {
         Reservation reservation = new Reservation();
         reservation.setId(rs.getInt("id"));
         reservation.setDateReservation(rs.getDate("date_reservation"));
+        reservation.setNotification(rs.getBoolean("notification"));
+        reservation.setDateNotification(rs.getDate("date_notification"));
 
         OuvrageDaoImpl ouvrageDao = new OuvrageDaoImpl();
         reservation.setOuvrage(ouvrageDao.find(rs.getInt("ouvrage_id")));
