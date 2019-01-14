@@ -1,5 +1,7 @@
 package com.batch.app.notification;
 
+import com.batch.app.task.ConvertOuvrage;
+import com.batch.app.task.Mail;
 import com.vianney.ws.gestionpret.GestionPret;
 import com.vianney.ws.gestionpret.GestionPretService;
 import com.vianney.ws.gestionpret.Ouvrage;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.*;
 
@@ -22,6 +25,9 @@ import java.util.*;
 public class BatchTasklet implements Tasklet {
 
     @Value("${batch.message}") private String message;
+
+    @Autowired
+    private Mail mail;
 
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         System.out.println(message);
@@ -31,15 +37,32 @@ public class BatchTasklet implements Tasklet {
 
         List<Reservation> reservationList = gestionReservation.listReservation();
 
-        List<Reservation> list = gestionReservation.searchReservationByOuvrage(reservationList.get(0).getOuvrage());
-        Reservation reserv = testPremierReservation(list);
-
-        /*
         for(Reservation tempReservation :reservationList){
             testFinReservation(tempReservation);
         }
-*/
 
+        List<Reservation> reservationList2 = gestionReservation.listReservation();
+        List<Ouvrage> list = listerOuvrageEnReservation(reservationList2);
+        ConvertOuvrage convertOuvrage = new ConvertOuvrage();
+
+        for(Ouvrage ouvrage : list){
+            if(testRetourOuvrage(ouvrage)){
+                List<Reservation> reservations = gestionReservation.searchReservationByOuvrage(convertOuvrage.ouvrageToOuvrageReservation(ouvrage));
+                Reservation reservation = testPremierReservation(reservations);
+                if(!reservation.isNotification()){
+                    mail.send(reservation);
+
+                    Date date = new Date();
+                    GregorianCalendar c = new GregorianCalendar();
+                    c.setTime(date);
+                    XMLGregorianCalendar date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
+
+                    reservation.setNotification(true);
+                    reservation.setDateNotification(date2);
+                    gestionReservation.updateReservation(reservation);
+                }
+            }
+        }
 
         return RepeatStatus.FINISHED;
     }
@@ -89,7 +112,7 @@ public class BatchTasklet implements Tasklet {
 
     public Reservation testPremierReservation(List<Reservation> reservationList){
        Reservation reservation = new Reservation();
-       
+
        Collections.sort(reservationList, new Comparator<Reservation>() {
             public int compare(Reservation o1, Reservation o2) {
                 if (o1.getDateReservation() == null || o2.getDateNotification() == null)
@@ -101,5 +124,27 @@ public class BatchTasklet implements Tasklet {
         reservation = reservationList.get(0);
 
         return reservation;
+    }
+
+    public List<Ouvrage> listerOuvrageEnReservation(List<Reservation> list){
+        List<Ouvrage> ouvrageList = new ArrayList<Ouvrage>();
+        ConvertOuvrage convert = new ConvertOuvrage();
+
+        Iterator<Reservation> it = list.iterator();
+        while(it.hasNext()) {
+            Reservation reserv = it.next();
+            ouvrageList.add(convert.ouvrageToOuvragePret(reserv.getOuvrage()));
+
+        }
+        for(int i = 0; i < ouvrageList.size(); i++) {
+            for(int j = i + 1; j < ouvrageList.size(); j++) {
+                if(ouvrageList.get(i).getId()==ouvrageList.get(j).getId()){
+                    ouvrageList.remove(j);
+                    j--;
+                }
+            }
+        }
+
+        return ouvrageList;
     }
 }
