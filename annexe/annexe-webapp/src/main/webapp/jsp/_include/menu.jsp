@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <nav class="navbar navbar-default">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -30,7 +32,7 @@
 					<li><s:a>
 							<s:property value="#session.user.nom" />
 						</s:a></li>
-					<li><s:a action="logout">D�connexion</s:a></li>
+					<li><s:a action="logout">Déconnexion</s:a></li>
 				</s:if>
 			</ul>
 		</div>
