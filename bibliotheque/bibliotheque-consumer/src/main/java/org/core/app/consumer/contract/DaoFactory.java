@@ -10,5 +10,6 @@ public interface DaoFactory {
 	PretDao         getPretDao();
 	StatusDao       getStatusDao();
 	UtilisateurDao  getUtilisateurDao();
+	ReservationDao  getReservationDao();
 
 }

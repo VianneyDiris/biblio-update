@@ -11,5 +11,6 @@ public interface ManagerFactory {
 	PretManager         getPretManager();
 	StatusManager       getStatusManager();
 	UtilisateurManager  getUtilisateurManager();
+	ReservationManager  getReservationManager();
 
 }

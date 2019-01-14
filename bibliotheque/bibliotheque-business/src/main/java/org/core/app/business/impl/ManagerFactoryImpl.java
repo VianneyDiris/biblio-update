@@ -1,14 +1,7 @@
 package org.core.app.business.impl;
 
 import org.core.app.business.contract.ManagerFactory;
-import org.core.app.business.contract.manager.AuteurManager;
-import org.core.app.business.contract.manager.EditeurManager;
-import org.core.app.business.contract.manager.GenreManager;
-import org.core.app.business.contract.manager.LangueManager;
-import org.core.app.business.contract.manager.OuvrageManager;
-import org.core.app.business.contract.manager.PretManager;
-import org.core.app.business.contract.manager.StatusManager;
-import org.core.app.business.contract.manager.UtilisateurManager;
+import org.core.app.business.contract.manager.*;
 
 public class ManagerFactoryImpl implements ManagerFactory {
 
@@ -83,6 +76,13 @@ public class ManagerFactoryImpl implements ManagerFactory {
 	public void setUtilisateurManager(UtilisateurManager utilisateurManager) {
 		this.utilisateurManager = utilisateurManager;
 	}
-	
 
+	private ReservationManager reservationManager;
+	public ReservationManager getReservationManager() {
+		return reservationManager;
+	}
+
+	public void setReservationManager(ReservationManager reservationManager) {
+		this.reservationManager = reservationManager;
+	}
 }

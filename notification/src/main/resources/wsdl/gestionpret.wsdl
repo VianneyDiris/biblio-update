@@ -280,7 +280,7 @@
   </wsdl:binding>
   <wsdl:service name="GestionPretService">
     <wsdl:port binding="tns:GestionPretServiceSoapBinding" name="GestionPretPort">
-      <soap:address location="http://localhost:8080/services/gestionpret"/>
+      <soap:address location="http://localhost:8080/bibliotheque-webapp/services/gestionpret"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -1,14 +1,7 @@
 package org.core.app.consumer.impl;
 
-import org.core.app.consumer.contract.AuteurDao;
-import org.core.app.consumer.contract.DaoFactory;
-import org.core.app.consumer.contract.EditeurDao;
-import org.core.app.consumer.contract.GenreDao;
-import org.core.app.consumer.contract.LangueDao;
-import org.core.app.consumer.contract.OuvrageDao;
-import org.core.app.consumer.contract.PretDao;
-import org.core.app.consumer.contract.StatusDao;
-import org.core.app.consumer.contract.UtilisateurDao;
+import org.core.app.consumer.contract.*;
+import org.core.app.model.bean.Reservation;
 
 public class DaoFactoryImpl implements DaoFactory {
 
@@ -84,4 +77,12 @@ public class DaoFactoryImpl implements DaoFactory {
 		this.utilisateurDao = utilisateurDao;
 	}
 
+	private ReservationDao reservationDao;
+	public ReservationDao getReservationDao() {
+		return reservationDao;
+	}
+
+	public void setReservationDao(ReservationDao reservationDao) {
+		this.reservationDao = reservationDao;
+	}
 }
