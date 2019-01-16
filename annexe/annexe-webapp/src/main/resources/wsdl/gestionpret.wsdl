@@ -35,6 +35,7 @@
       <xs:element minOccurs="0" name="date_debut" type="xs:dateTime"/>
       <xs:element minOccurs="0" name="date_fin" type="xs:dateTime"/>
       <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element name="notification" type="xs:boolean"/>
       <xs:element minOccurs="0" name="ouvrage" type="tns:Ouvrage"/>
       <xs:element name="prolongation" type="xs:boolean"/>
       <xs:element minOccurs="0" name="status" type="tns:Status"/>
@@ -96,6 +97,7 @@
 
   <xs:complexType name="Utilisateur">
     <xs:sequence>
+      <xs:element name="expiration" type="xs:boolean"/>
       <xs:element minOccurs="0" name="id" type="xs:int"/>
       <xs:element minOccurs="0" name="mail" type="xs:string"/>
       <xs:element minOccurs="0" name="nom" type="xs:string"/>
@@ -241,7 +243,7 @@
   </wsdl:binding>
   <wsdl:service name="GestionPretService">
     <wsdl:port binding="tns:GestionPretServiceSoapBinding" name="GestionPretPort">
-      <soap:address location="http://localhost:8080/services/gestionpret"/>
+      <soap:address location="http://localhost:8080/bibliotheque-webapp/services/gestionpret"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
