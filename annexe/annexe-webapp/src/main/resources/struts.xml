@@ -68,5 +68,10 @@
 			<result type="redirectAction">pret</result>
 		</action>
 
+		<action name="profil" class="org.annexe.app.webapp.action.GestionUtilisateurAction" method="doUserDetail">
+			<result name="success">jsp/site/profil.jsp</result>
+		</action>
+
+
 	</package>
 </struts>

@@ -6,9 +6,12 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.vianney.ws.gestionuser.GestionUser;
 import com.vianney.ws.gestionuser.GestionUserService;
 import com.vianney.ws.gestionuser.Utilisateur;
+import org.apache.struts2.interceptor.SessionAware;
+
+import java.util.Map;
 
 @SuppressWarnings("serial")
-public class GestionUtilisateurAction extends ActionSupport {
+public class GestionUtilisateurAction extends ActionSupport implements SessionAware {
 	// ==================== Attributs ====================
 	// ----- Paramètres en entrée
 	private String nom;
@@ -16,6 +19,10 @@ public class GestionUtilisateurAction extends ActionSupport {
 	private String mail;
 	private String password;
 	private String passwordConfirm;
+	private Map<String, Object> session;
+
+	// ----- Paramètres en sortie
+	private Utilisateur user;
 	
 	// ==================== Getters/Setters ====================
 	public String getNom() {
@@ -47,8 +54,23 @@ public class GestionUtilisateurAction extends ActionSupport {
 	}
 	public void setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
-	}	
-	
+	}
+
+	public Utilisateur getUser() {
+		return user;
+	}
+
+	public void setUser(Utilisateur user) {
+		this.user = user;
+	}
+	public Map<String, Object> getSession() {
+		return session;
+	}
+	public void setSession(Map<String, Object> pSession) {
+		// TODO Auto-generated method stub
+		this.session=pSession;
+	}
+
 	// ==================== Méthodes ====================
 	public String doCreateUser() {
 		
@@ -65,6 +87,7 @@ public class GestionUtilisateurAction extends ActionSupport {
 				 user.setPrenom(prenom);
 				 user.setMail(mail);
 				 user.setPassword(password);
+				 user.setExpiration(true);
 				 
 				 boolean bool = serviceUser.addUtilisateur(user);
 				 
@@ -75,6 +98,13 @@ public class GestionUtilisateurAction extends ActionSupport {
 					
 		 }
 		return vResult;
+	}
+
+	public String doUserDetail(){
+		user =(Utilisateur) session.get("user");
+
+
+		return ActionSupport.SUCCESS;
 	}
 
 }
