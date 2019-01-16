@@ -34,4 +34,9 @@ public class GestionUserImpl implements GestionUser {
 		return true;
 	}
 
+	@Override
+	public void updateUtilisateur(Utilisateur user) {
+		managerFactory.getUtilisateurManager().updateUtilisateur(user);
+	}
+
 }

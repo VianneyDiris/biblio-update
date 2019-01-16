@@ -11,6 +11,7 @@ public class Utilisateur {
 	private String prenom;
 	private String mail;
 	private String password;
+	private boolean expiration;
 	
 	// ==================== Getters/Setters ====================
 	public Integer getId() {
@@ -42,6 +43,13 @@ public class Utilisateur {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}	
+	}
 
+	public boolean isExpiration() {
+		return expiration;
+	}
+
+	public void setExpiration(boolean expiration) {
+		this.expiration = expiration;
+	}
 }

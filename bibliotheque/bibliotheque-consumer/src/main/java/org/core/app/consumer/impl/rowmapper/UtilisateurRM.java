@@ -18,6 +18,7 @@ public class UtilisateurRM implements RowMapper<Utilisateur> {
 		user.setPrenom(rs.getString("prenom"));
 		user.setMail(rs.getString("mail"));
 		user.setPassword(rs.getString("password"));
+		user.setExpiration(rs.getBoolean("expiration"));
 		
 		return user;
 	}
