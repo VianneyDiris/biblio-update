@@ -6,6 +6,10 @@
 
   <xs:element name="addPretResponse" type="tns:addPretResponse"/>
 
+  <xs:element name="getListPretByOuvrage" type="tns:getListPretByOuvrage"/>
+
+  <xs:element name="getListPretByOuvrageResponse" type="tns:getListPretByOuvrageResponse"/>
+
   <xs:element name="getListPretByUser" type="tns:getListPretByUser"/>
 
   <xs:element name="getListPretByUserResponse" type="tns:getListPretByUserResponse"/>
@@ -110,18 +114,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="updatePret">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="pret" type="tns:Pret"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="updatePretResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:boolean"/>
-    </xs:sequence>
-  </xs:complexType>
-
   <xs:complexType name="getListPretByUser">
     <xs:sequence>
       <xs:element minOccurs="0" name="utilisateur" type="tns:Utilisateur"/>
@@ -146,6 +138,18 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="getListPretByOuvrage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ouvrage" type="tns:Ouvrage"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getListPretByOuvrageResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:Pret"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="getListPretEnCours">
     <xs:sequence/>
   </xs:complexType>
@@ -153,6 +157,18 @@
   <xs:complexType name="getListPretEnCoursResponse">
     <xs:sequence>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:Pret"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updatePret">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pret" type="tns:Pret"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updatePretResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -174,20 +190,28 @@
     <wsdl:part element="tns:addPret" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="getListPretEnCours">
-    <wsdl:part element="tns:getListPretEnCours" name="parameters">
+  <wsdl:message name="getListPretByOuvrage">
+    <wsdl:part element="tns:getListPretByOuvrage" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="updatePretResponse">
-    <wsdl:part element="tns:updatePretResponse" name="parameters">
+  <wsdl:message name="getListPretEnCours">
+    <wsdl:part element="tns:getListPretEnCours" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="addPretResponse">
     <wsdl:part element="tns:addPretResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="updatePretResponse">
+    <wsdl:part element="tns:updatePretResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="updatePret">
     <wsdl:part element="tns:updatePret" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListPretByOuvrageResponse">
+    <wsdl:part element="tns:getListPretByOuvrageResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getListPretByUserResponse">
@@ -205,12 +229,6 @@
       <wsdl:output message="tns:getPretByIDResponse" name="getPretByIDResponse">
     </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="updatePret">
-      <wsdl:input message="tns:updatePret" name="updatePret">
-    </wsdl:input>
-      <wsdl:output message="tns:updatePretResponse" name="updatePretResponse">
-    </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getListPretByUser">
       <wsdl:input message="tns:getListPretByUser" name="getListPretByUser">
     </wsdl:input>
@@ -223,10 +241,22 @@
       <wsdl:output message="tns:addPretResponse" name="addPretResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getListPretByOuvrage">
+      <wsdl:input message="tns:getListPretByOuvrage" name="getListPretByOuvrage">
+    </wsdl:input>
+      <wsdl:output message="tns:getListPretByOuvrageResponse" name="getListPretByOuvrageResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getListPretEnCours">
       <wsdl:input message="tns:getListPretEnCours" name="getListPretEnCours">
     </wsdl:input>
       <wsdl:output message="tns:getListPretEnCoursResponse" name="getListPretEnCoursResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePret">
+      <wsdl:input message="tns:updatePret" name="updatePret">
+    </wsdl:input>
+      <wsdl:output message="tns:updatePretResponse" name="updatePretResponse">
     </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
@@ -238,15 +268,6 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getPretByIDResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="updatePret">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="updatePret">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="updatePretResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -268,12 +289,30 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getListPretByOuvrage">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getListPretByOuvrage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListPretByOuvrageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getListPretEnCours">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="getListPretEnCours">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getListPretEnCoursResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePret">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updatePret">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updatePretResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

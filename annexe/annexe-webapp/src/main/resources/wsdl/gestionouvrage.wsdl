@@ -132,7 +132,7 @@
   </wsdl:binding>
   <wsdl:service name="GestionOuvrageService">
     <wsdl:port binding="tns:GestionOuvrageServiceSoapBinding" name="GestionOuvragePort">
-      <soap:address location="http://localhost:8080/services/gestionouvrage"/>
+      <soap:address location="http://localhost:8080/bibliotheque-webapp/services/gestionouvrage"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
