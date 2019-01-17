@@ -77,6 +77,23 @@
 			<result type="redirectAction">profil</result>
 		</action>
 
+		<!-- Action "reservation" -->
+		<action name="reservation" class="org.annexe.app.webapp.action.GestionReservationAction" method="doListReservation">
+			<result name="success">jsp/site/reservation.jsp</result>
+		</action>
+
+		<!-- Action "addReservation" -->
+		<action name="addReservation" class="org.annexe.app.webapp.action.GestionReservationAction" method="doAddReservation">
+			<result type="redirectAction">reservation</result>
+		</action>
+
+		<action name="reservation_detail" class="org.annexe.app.webapp.action.GestionReservationAction" method="doReservationDetail">
+			<result name="success">jsp/site/reservation_detail.jsp</result>
+		</action>
+
+		<action name="endReservation" class="org.annexe.app.webapp.action.GestionReservationAction" method="doEndReservation">
+			<result type="redirectAction">reservation</result>
+		</action>
 
 	</package>
 </struts>

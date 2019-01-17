@@ -6,6 +6,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
+import org.core.app.model.bean.Ouvrage;
 import org.core.app.model.bean.Pret;
 import org.core.app.model.bean.Utilisateur;
 
@@ -26,5 +27,9 @@ public interface GestionPret {
 
 	@WebMethod
 	public List<Pret> getListPretEnCours();
+
+  @WebMethod
+	public List<Pret> getListPretByOuvrage(@WebParam(name="ouvrage") Ouvrage ouvrage);
+
 
 }

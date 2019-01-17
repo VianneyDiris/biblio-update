@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <nav class="navbar navbar-default">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -15,7 +17,8 @@
 			<li class="active"><s:a action="index">Accueil</s:a></li>
 			<s:if test="#session.user">
 					<li><s:a action="ouvrage">Ouvrage</s:a></li>
-					<li><s:a action="pret">Pret</s:a></li>
+					<li><s:a action="pret">Prêt</s:a></li>
+					<li><s:a action="reservation">Réservation</s:a></li>
 			</s:if>
 			<s:else>
 			<li><s:a action="login">Connexion</s:a></li>

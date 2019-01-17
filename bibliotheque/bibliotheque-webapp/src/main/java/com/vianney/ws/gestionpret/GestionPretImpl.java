@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.core.app.business.impl.ManagerFactoryImpl;
+import org.core.app.model.bean.Ouvrage;
 import org.core.app.model.bean.Pret;
 import org.core.app.model.bean.Utilisateur;
 import org.core.app.model.exception.NotFoundException;
@@ -85,6 +86,17 @@ public class GestionPretImpl implements GestionPret {
 			e.printStackTrace();
 		}
 		return listPret;
+  }
+  
+  @Override
+	public List<Pret> getListPretByOuvrage(Ouvrage ouvrage) {
+		List<Pret> prets = null;
+		try {
+			prets = managerFactory.getPretManager().searchPretByOuvrage(ouvrage);
+		} catch (NotFoundException e) {
+			e.printStackTrace();
+		}
+		return prets;
 	}
 
 }

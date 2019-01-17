@@ -1,0 +1,348 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://gestionreservation.ws.vianney.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="GestionReservationService" targetNamespace="http://gestionreservation.ws.vianney.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://gestionreservation.ws.vianney.com/" elementFormDefault="unqualified" targetNamespace="http://gestionreservation.ws.vianney.com/" version="1.0">
+
+  <xs:element name="addReservation" type="tns:addReservation"/>
+
+  <xs:element name="addReservationResponse" type="tns:addReservationResponse"/>
+
+  <xs:element name="deleteReservation" type="tns:deleteReservation"/>
+
+  <xs:element name="deleteReservationResponse" type="tns:deleteReservationResponse"/>
+
+  <xs:element name="find" type="tns:find"/>
+
+  <xs:element name="findResponse" type="tns:findResponse"/>
+
+  <xs:element name="listReservation" type="tns:listReservation"/>
+
+  <xs:element name="listReservationResponse" type="tns:listReservationResponse"/>
+
+  <xs:element name="searchReservationByOuvrage" type="tns:searchReservationByOuvrage"/>
+
+  <xs:element name="searchReservationByOuvrageResponse" type="tns:searchReservationByOuvrageResponse"/>
+
+  <xs:element name="searchReservationByUtilisateur" type="tns:searchReservationByUtilisateur"/>
+
+  <xs:element name="searchReservationByUtilisateurResponse" type="tns:searchReservationByUtilisateurResponse"/>
+
+  <xs:element name="updateReservation" type="tns:updateReservation"/>
+
+  <xs:element name="updateReservationResponse" type="tns:updateReservationResponse"/>
+
+  <xs:complexType name="searchReservationByUtilisateur">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:Utilisateur"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Utilisateur">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="mail" type="xs:string"/>
+      <xs:element minOccurs="0" name="nom" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="prenom" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="searchReservationByUtilisateurResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:Reservation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Reservation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dateNotification" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="dateReservation" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element name="notification" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="ouvrage" type="tns:Ouvrage"/>
+      <xs:element minOccurs="0" name="utilisateur" type="tns:Utilisateur"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Ouvrage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="editeur" type="tns:Editeur"/>
+      <xs:element minOccurs="0" name="exemplaire" type="xs:int"/>
+      <xs:element name="ISBN" type="xs:long"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="langue" type="tns:Langue"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listAuteur" nillable="true" type="tns:Auteur"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listGenre" nillable="true" type="tns:Genre"/>
+      <xs:element minOccurs="0" name="photos" type="xs:string"/>
+      <xs:element minOccurs="0" name="resume" type="xs:string"/>
+      <xs:element minOccurs="0" name="titre" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Editeur">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="nom" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Langue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="langue" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Auteur">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="nom" type="xs:string"/>
+      <xs:element minOccurs="0" name="prenom" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Genre">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="genre" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteReservation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:Reservation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteReservationResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="listReservation">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="listReservationResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:Reservation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addReservation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:Reservation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addReservationResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="searchReservationByOuvrage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:Ouvrage"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="searchReservationByOuvrageResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:Reservation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="find">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:Reservation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateReservation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:Reservation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateReservationResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findResponse">
+    <wsdl:part element="tns:findResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchReservationByUtilisateur">
+    <wsdl:part element="tns:searchReservationByUtilisateur" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listReservationResponse">
+    <wsdl:part element="tns:listReservationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteReservation">
+    <wsdl:part element="tns:deleteReservation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listReservation">
+    <wsdl:part element="tns:listReservation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateReservationResponse">
+    <wsdl:part element="tns:updateReservationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteReservationResponse">
+    <wsdl:part element="tns:deleteReservationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchReservationByOuvrage">
+    <wsdl:part element="tns:searchReservationByOuvrage" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchReservationByUtilisateurResponse">
+    <wsdl:part element="tns:searchReservationByUtilisateurResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateReservation">
+    <wsdl:part element="tns:updateReservation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addReservationResponse">
+    <wsdl:part element="tns:addReservationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchReservationByOuvrageResponse">
+    <wsdl:part element="tns:searchReservationByOuvrageResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addReservation">
+    <wsdl:part element="tns:addReservation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="find">
+    <wsdl:part element="tns:find" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GestionReservation">
+    <wsdl:operation name="searchReservationByUtilisateur">
+      <wsdl:input message="tns:searchReservationByUtilisateur" name="searchReservationByUtilisateur">
+    </wsdl:input>
+      <wsdl:output message="tns:searchReservationByUtilisateurResponse" name="searchReservationByUtilisateurResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteReservation">
+      <wsdl:input message="tns:deleteReservation" name="deleteReservation">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteReservationResponse" name="deleteReservationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listReservation">
+      <wsdl:input message="tns:listReservation" name="listReservation">
+    </wsdl:input>
+      <wsdl:output message="tns:listReservationResponse" name="listReservationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addReservation">
+      <wsdl:input message="tns:addReservation" name="addReservation">
+    </wsdl:input>
+      <wsdl:output message="tns:addReservationResponse" name="addReservationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchReservationByOuvrage">
+      <wsdl:input message="tns:searchReservationByOuvrage" name="searchReservationByOuvrage">
+    </wsdl:input>
+      <wsdl:output message="tns:searchReservationByOuvrageResponse" name="searchReservationByOuvrageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="find">
+      <wsdl:input message="tns:find" name="find">
+    </wsdl:input>
+      <wsdl:output message="tns:findResponse" name="findResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateReservation">
+      <wsdl:input message="tns:updateReservation" name="updateReservation">
+    </wsdl:input>
+      <wsdl:output message="tns:updateReservationResponse" name="updateReservationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GestionReservationServiceSoapBinding" type="tns:GestionReservation">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="searchReservationByUtilisateur">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="searchReservationByUtilisateur">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchReservationByUtilisateurResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteReservation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteReservation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteReservationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listReservation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listReservation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listReservationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addReservation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addReservation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addReservationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchReservationByOuvrage">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="searchReservationByOuvrage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchReservationByOuvrageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="find">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="find">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateReservation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateReservation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateReservationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GestionReservationService">
+    <wsdl:port binding="tns:GestionReservationServiceSoapBinding" name="GestionReservationPort">
+      <soap:address location="http://localhost:8080/bibliotheque-webapp/services/gestionreservation"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
