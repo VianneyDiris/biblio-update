@@ -4,7 +4,8 @@ Création d'un batch pour les prêts arrivant à expiration
 
 
 ## Base de données
-- No update
+- Ajout d'un attribut boolean notification dans la table Pret
+- Ajout d'un attribut boolean expiration dans la table Utilisateur
 
 ## Bibliotheque
 - No update

@@ -4,14 +4,14 @@ Problématique : Un utilisateur peut prolonger son prêt après la date de retou
 
 
 ## Base de données
-No update
+- No update
 
 ## Bibliotheque
-No update
+- No update
 
 ## Annexe
 - Ajout d'une vérification lié à la date de fin de prêt.
 
 
 ## Batch
-No update
+- No update
