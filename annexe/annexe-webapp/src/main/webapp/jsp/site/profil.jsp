@@ -38,8 +38,8 @@
                 </div>
 
                 <div class="form-group">
-                    <s:label for="notification" class="">Notification: </s:label>
-                    <s:radio name="notification" list="#{'true':'Oui','false':'Non'}" />
+                    <s:label for="expiration" class="">Notification: </s:label>
+                    <s:radio name="expiration" list="#{'true':'Oui','false':'Non'}" value="%{user.expiration}" />
                 </div>
 
 

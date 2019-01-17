@@ -20,7 +20,7 @@ public class GestionUtilisateurAction extends ActionSupport implements SessionAw
 	private String password;
 	private String passwordConfirm;
 	private Map<String, Object> session;
-
+	private String expiration;
 	// ----- Paramètres en sortie
 	private Utilisateur user;
 	
@@ -71,6 +71,14 @@ public class GestionUtilisateurAction extends ActionSupport implements SessionAw
 		this.session=pSession;
 	}
 
+	public String getExpiration() {
+		return expiration;
+	}
+
+	public void setExpiration(String expiration) {
+		this.expiration = expiration;
+	}
+
 	// ==================== Méthodes ====================
 	public String doCreateUser() {
 		
@@ -102,6 +110,32 @@ public class GestionUtilisateurAction extends ActionSupport implements SessionAw
 
 	public String doUserDetail(){
 		user =(Utilisateur) session.get("user");
+
+
+		return ActionSupport.SUCCESS;
+	}
+
+	public String doUpdateUser(){
+		user =(Utilisateur) session.get("user");
+		if (!StringUtils.isAllEmpty(nom)){
+			user.setNom(nom);
+		}
+		if (!StringUtils.isAllEmpty(prenom)){
+			user.setPrenom(prenom);
+		}
+		if (!StringUtils.isAllEmpty(mail)){
+			user.setMail(mail);
+		}
+		if (!StringUtils.isAllEmpty(password)){
+			user.setPassword(password);
+		}
+
+		user.setExpiration(Boolean.parseBoolean(expiration));
+
+		GestionUserService userService = new GestionUserService();
+		GestionUser serviceUser = userService.getGestionUserPort();
+
+		serviceUser.updateUtilisateur(user);
 
 
 		return ActionSupport.SUCCESS;

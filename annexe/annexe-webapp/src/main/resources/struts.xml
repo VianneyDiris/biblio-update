@@ -63,13 +63,18 @@
 			</result>
 		</action>
 
-		<!-- Action "vos Pret" -->
+		<!-- Action "fin Pret" -->
 		<action name="endPret" class="org.annexe.app.webapp.action.GestionPretAction" method="doEndPret">
 			<result type="redirectAction">pret</result>
 		</action>
 
 		<action name="profil" class="org.annexe.app.webapp.action.GestionUtilisateurAction" method="doUserDetail">
 			<result name="success">jsp/site/profil.jsp</result>
+		</action>
+
+		<!-- Action "update_user" -->
+		<action name="update_user" class="org.annexe.app.webapp.action.GestionUtilisateurAction" method="doUpdateUser">
+			<result type="redirectAction">profil</result>
 		</action>
 
 
