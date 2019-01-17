@@ -97,4 +97,9 @@ public class PretManagerImpl extends AbstractManagerImpl implements PretManager 
 		return getDaoFactory().getPretDao().listPretNonRenduByUser(user,date);
 	}
 
+	@Override
+	public List<Pret> listPretEnCours() throws NotFoundException {
+		return getDaoFactory().getPretDao().listPretEnCours();
+	}
+
 }

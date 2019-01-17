@@ -24,4 +24,7 @@ public interface GestionPret {
 	@WebMethod
 	public Pret getPretByID(@WebParam(name = "id")Integer id);
 
+	@WebMethod
+	public List<Pret> getListPretEnCours();
+
 }

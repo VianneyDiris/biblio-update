@@ -113,6 +113,17 @@ public class PretDaoImpl extends AbstractDaoImpl implements PretDao {
 		return listPret;
 	}
 
-	
+	@Override
+	public List<Pret> listPretEnCours() {
+		String vsql="SELECT * FROM public.pret WHERE status_id=1";
+
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		PretRM rowPret = new PretRM();
+
+		List<Pret> listPret = vJdbcTemplate.query(vsql,rowPret);
+
+		return listPret;
+	}
+
 
 }
