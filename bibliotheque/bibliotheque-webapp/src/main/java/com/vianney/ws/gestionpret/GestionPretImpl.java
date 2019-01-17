@@ -76,6 +76,19 @@ public class GestionPretImpl implements GestionPret {
 	}
 
 	@Override
+	public List<Pret> getListPretEnCours() {
+		List<Pret> listPret = new ArrayList<Pret>();
+
+		try {
+			listPret=managerFactory.getPretManager().listPretEnCours();
+		} catch (NotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listPret;
+  }
+  
+  @Override
 	public List<Pret> getListPretByOuvrage(Ouvrage ouvrage) {
 		List<Pret> prets = null;
 		try {

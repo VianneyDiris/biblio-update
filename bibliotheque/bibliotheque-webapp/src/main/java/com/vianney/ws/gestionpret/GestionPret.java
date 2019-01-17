@@ -26,6 +26,10 @@ public interface GestionPret {
 	public Pret getPretByID(@WebParam(name = "id")Integer id);
 
 	@WebMethod
+	public List<Pret> getListPretEnCours();
+
+  @WebMethod
 	public List<Pret> getListPretByOuvrage(@WebParam(name="ouvrage") Ouvrage ouvrage);
+
 
 }

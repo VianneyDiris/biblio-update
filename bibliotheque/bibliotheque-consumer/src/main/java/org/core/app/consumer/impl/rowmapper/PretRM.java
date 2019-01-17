@@ -20,6 +20,7 @@ public class PretRM implements RowMapper<Pret>{
 		pret.setDate_debut(rs.getDate("date_debut"));
 		pret.setDate_fin(rs.getDate("date_fin"));
 		pret.setProlongation(rs.getBoolean("prolongation"));
+		pret.setNotification(rs.getBoolean("notification"));
 		
 		UtilisateurDaoImpl userDao = new UtilisateurDaoImpl();
 		pret.setUtilisateur(userDao.find(rs.getInt("utilisateur_id")));

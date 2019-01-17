@@ -21,6 +21,8 @@ public interface PretManager {
 	List<Pret> listPretNonRendu(Date date) throws NotFoundException;
 	
 	List<Pret>listPretNonRenduByUser(Utilisateur user,Date date) throws NotFoundException;
+
+	List<Pret> listPretEnCours()throws NotFoundException;
 	
 	void addPret(Pret pret);
 	

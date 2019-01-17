@@ -20,6 +20,8 @@ public interface PretDao {
 	List<Pret> listPretNonRendu(Date date);
 	
 	List<Pret> listPretNonRenduByUser(Utilisateur user, Date date);
+
+	List<Pret> listPretEnCours();
 	
 	void addPret(Pret pret);
 	

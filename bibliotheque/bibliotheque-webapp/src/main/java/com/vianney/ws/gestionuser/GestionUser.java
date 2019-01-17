@@ -13,6 +13,9 @@ public interface GestionUser {
 	public Utilisateur getUtilisateur(@WebParam(name="mail")String mail,@WebParam(name="password") String password);
 	
 	@WebMethod
-	public boolean addUtilisateur(Utilisateur user);
+	public boolean addUtilisateur(@WebParam(name="utilisateur")Utilisateur user);
+
+	@WebMethod
+	public void updateUtilisateur(@WebParam(name="utilisateur")Utilisateur user);
 
 }

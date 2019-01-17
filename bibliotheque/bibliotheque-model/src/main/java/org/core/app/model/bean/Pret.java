@@ -14,6 +14,7 @@ public class Pret {
 	private Date date_debut;
 	private Date date_fin;
 	private boolean prolongation;
+	private boolean notification;
 	
 	// ==================== Getters/Setters ====================
 	public Integer getId() {
@@ -57,6 +58,13 @@ public class Pret {
 	}
 	public void setProlongation(boolean prolongation) {
 		this.prolongation = prolongation;
-	}	
+	}
 
+	public boolean isNotification() {
+		return notification;
+	}
+
+	public void setNotification(boolean notification) {
+		this.notification = notification;
+	}
 }

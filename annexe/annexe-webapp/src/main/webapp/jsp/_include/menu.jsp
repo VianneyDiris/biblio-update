@@ -29,7 +29,7 @@
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 				<s:if test="#session.user">
-					<li><s:a>
+					<li><s:a action="profil">
 							<s:property value="#session.user.nom" />
 						</s:a></li>
 					<li><s:a action="logout">Déconnexion</s:a></li>

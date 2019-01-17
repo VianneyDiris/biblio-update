@@ -66,18 +66,18 @@ public class PretDaoImpl extends AbstractDaoImpl implements PretDao {
 	@Override
 	public void addPret(Pret pret) {
 		// TODO Auto-generated method stub
-		String vsql = "INSERT INTO public.pret (utilisateur_id,ouvrage_id,status_id,date_debut,date_fin,prolongation) VALUES (?,?,?,?,?,?)";
+		String vsql = "INSERT INTO public.pret (utilisateur_id,ouvrage_id,status_id,date_debut,date_fin,prolongation,notification) VALUES (?,?,?,?,?,?,?)";
 		
 		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-		vJdbcTemplate.update(vsql,pret.getUtilisateur().getId(),pret.getOuvrage().getId(),pret.getStatus().getId(),pret.getDate_debut(),pret.getDate_fin(),pret.isProlongation());
+		vJdbcTemplate.update(vsql,pret.getUtilisateur().getId(),pret.getOuvrage().getId(),pret.getStatus().getId(),pret.getDate_debut(),pret.getDate_fin(),pret.isProlongation(),pret.isNotification());
 	}
 
 	@Override
 	public void updatePret(Pret pret) {
 		// TODO Auto-generated method stub
-		String vSQL = "UPDATE public.pret SET utilisateur_id =?, ouvrage_id=?, status_id=?, date_debut=?, date_fin=?, prolongation=? WHERE id = ?";
+		String vSQL = "UPDATE public.pret SET utilisateur_id =?, ouvrage_id=?, status_id=?, date_debut=?, date_fin=?, prolongation=?, notification=? WHERE id = ?";
 		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-		vJdbcTemplate.update(vSQL,pret.getUtilisateur().getId(),pret.getOuvrage().getId(),pret.getStatus().getId(),pret.getDate_debut(),pret.getDate_fin(),pret.isProlongation(),pret.getId());
+		vJdbcTemplate.update(vSQL,pret.getUtilisateur().getId(),pret.getOuvrage().getId(),pret.getStatus().getId(),pret.getDate_debut(),pret.getDate_fin(),pret.isProlongation(),pret.isNotification(),pret.getId());
 	}
 
 	@Override
@@ -113,6 +113,17 @@ public class PretDaoImpl extends AbstractDaoImpl implements PretDao {
 		return listPret;
 	}
 
-	
+	@Override
+	public List<Pret> listPretEnCours() {
+		String vsql="SELECT * FROM public.pret WHERE status_id=1";
+
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		PretRM rowPret = new PretRM();
+
+		List<Pret> listPret = vJdbcTemplate.query(vsql,rowPret);
+
+		return listPret;
+	}
+
 
 }
