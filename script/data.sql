@@ -63,3 +63,12 @@ INSERT INTO public.pret VALUES (4, 2, 1, 2, '2018-03-22', '2019-01-19', false, f
 
 
 INSERT INTO public.reservation VALUES (1, '2019-01-14', 1, 1, false, '2019-01-13');
+
+SELECT pg_catalog.setval('public.auteur_id_seq', 3, true);
+SELECT pg_catalog.setval('public.editeur_id_seq', 4, true);
+SELECT pg_catalog.setval('public.genre_id_seq', 5, true);
+SELECT pg_catalog.setval('public.langue_id_seq', 4, true);
+SELECT pg_catalog.setval('public.ouvrage_id_seq', 6, true);
+SELECT pg_catalog.setval('public.pret_id_seq', 5, true);
+SELECT pg_catalog.setval('public.status_id_seq', 2, true);
+SELECT pg_catalog.setval('public.utilisateur_id_seq', 2, true);
