@@ -111,6 +111,8 @@ CREATE TABLE public.pret (
                 date_debut DATE NOT NULL,
                 date_fin VARCHAR NOT NULL,
                 prolongation BOOLEAN NOT NULL,
+                notification boolean,
+                expiration boolean,
                 CONSTRAINT pret_pk PRIMARY KEY (id)
 );
 

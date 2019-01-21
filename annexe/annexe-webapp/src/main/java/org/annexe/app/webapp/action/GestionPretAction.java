@@ -178,6 +178,7 @@ public class GestionPretAction extends ActionSupport implements SessionAware{
 		newPret.setDateDebut(dateDebut);
 		newPret.setDateFin(dateFin);
 		newPret.setProlongation(false);
+		newPret.setNotification(false);
 		
 		
 		GestionPretService servicePret = new GestionPretService();
