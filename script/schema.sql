@@ -3,7 +3,7 @@ CREATE SEQUENCE public.status_id_seq;
 
 CREATE TABLE public.status (
                 id INTEGER NOT NULL DEFAULT nextval('public.status_id_seq'),
-                satus VARCHAR NOT NULL,
+                status VARCHAR NOT NULL,
                 CONSTRAINT status_pk PRIMARY KEY (id)
 );
 
@@ -65,7 +65,7 @@ CREATE TABLE public.ouvrage (
                 resume VARCHAR NOT NULL,
                 langue_id INTEGER NOT NULL,
                 editeur_id INTEGER NOT NULL,
-                ISBN INTEGER NOT NULL,
+                ISBN BIGINT NOT NULL,
                 exemplaire INTEGER NOT NULL,
                 CONSTRAINT ouvrage_pk PRIMARY KEY (id)
 );
@@ -95,11 +95,27 @@ CREATE TABLE public.utilisateur (
                 prenom VARCHAR NOT NULL,
                 mail VARCHAR NOT NULL,
                 password VARCHAR NOT NULL,
+                expiration BOOLEAN NOT NULL,
                 CONSTRAINT utilisateur_pk PRIMARY KEY (id)
 );
 
 
 ALTER SEQUENCE public.utilisateur_id_seq OWNED BY public.utilisateur.id;
+
+CREATE SEQUENCE public.reservation_id_seq;
+
+CREATE TABLE public.reservation (
+                id INTEGER NOT NULL DEFAULT nextval('public.reservation_id_seq'),
+                date_reservation DATE NOT NULL,
+                utilisateur_id INTEGER NOT NULL,
+                ouvrage_id INTEGER NOT NULL,
+                notification BOOLEAN NOT NULL,
+                date_notification DATE,
+                CONSTRAINT reservation_pk PRIMARY KEY (id)
+);
+
+
+ALTER SEQUENCE public.reservation_id_seq OWNED BY public.reservation.id;
 
 CREATE SEQUENCE public.pret_id_seq;
 
@@ -111,8 +127,7 @@ CREATE TABLE public.pret (
                 date_debut DATE NOT NULL,
                 date_fin VARCHAR NOT NULL,
                 prolongation BOOLEAN NOT NULL,
-                notification boolean,
-                expiration boolean,
+                notification BOOLEAN NOT NULL,
                 CONSTRAINT pret_pk PRIMARY KEY (id)
 );
 
@@ -175,7 +190,21 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
+ALTER TABLE public.reservation ADD CONSTRAINT ouvrage_reservation_fk
+FOREIGN KEY (ouvrage_id)
+REFERENCES public.ouvrage (id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
 ALTER TABLE public.pret ADD CONSTRAINT utilisateur_pret_fk
+FOREIGN KEY (utilisateur_id)
+REFERENCES public.utilisateur (id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.reservation ADD CONSTRAINT utilisateur_reservation_fk
 FOREIGN KEY (utilisateur_id)
 REFERENCES public.utilisateur (id)
 ON DELETE NO ACTION
