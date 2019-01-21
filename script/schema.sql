@@ -125,7 +125,7 @@ CREATE TABLE public.pret (
                 ouvrage_id INTEGER NOT NULL,
                 status_id INTEGER NOT NULL,
                 date_debut DATE NOT NULL,
-                date_fin VARCHAR NOT NULL,
+                date_fin DATE NOT NULL,
                 prolongation BOOLEAN NOT NULL,
                 notification BOOLEAN NOT NULL,
                 CONSTRAINT pret_pk PRIMARY KEY (id)

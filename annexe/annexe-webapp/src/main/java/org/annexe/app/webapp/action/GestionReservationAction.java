@@ -143,6 +143,7 @@ public class GestionReservationAction extends ActionSupport implements SessionAw
         addReserv.setDateReservation(dateReservation);
         addReserv.setOuvrage(ouvrage);
         addReserv.setUtilisateur(user);
+        addReserv.setNotification(false);
 
         GestionReservationService serviceReservation = new GestionReservationService();
         GestionReservation reservationService = serviceReservation.getGestionReservationPort();

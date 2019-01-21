@@ -58,10 +58,10 @@ public class ReservationDaoImpl extends AbstractDaoImpl implements ReservationDa
 
     @Override
     public void addReservation(Reservation reservation) {
-        String vsql = "INSERT INTO public.reservation (utilisateur_id,ouvrage_id,date_reservation) VALUES (?,?,?)";
+        String vsql = "INSERT INTO public.reservation (utilisateur_id,ouvrage_id,date_reservation,notification) VALUES (?,?,?,?)";
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-        vJdbcTemplate.update(vsql,reservation.getUtilisateur().getId(),reservation.getOuvrage().getId(),reservation.getDateReservation());
+        vJdbcTemplate.update(vsql,reservation.getUtilisateur().getId(),reservation.getOuvrage().getId(),reservation.getDateReservation(),reservation.isNotification());
     }
 
     @Override
