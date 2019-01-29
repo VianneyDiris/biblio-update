@@ -3,11 +3,12 @@
 Avant de lancer le programme, il faut savoir qu'il est conçu pour fonctionner sous JAVA 8, PostgreSQL 9 et Tomcat 9.
 
 
-Pour la base de données, vous trouverez ce qu'il vous faut dans le dossier script:
-* D'abord lancer le script create-user.sql pour créer le propriétaire de la bdd.
-* créer une nouvelle database, la nommer "db-biblio" et mettre "adm-biblio" en tant que propriétaire.
-* Ensuite lancer le script schema.sql pour créer le schéma de la bdd.
-* Enfin exécuter le script data.sql pour insérer les données.
+Pour la base de données, il vous suffit:
+* De lancer l'invite de commande.
+* D'aller jusqu'au dossier Docker.
+* De tapez la commande "docker-compose up".
+
+Pour supprimer la base de données, il faut tapez les commandes "docker-compose stop" et après "docker-compose rm -v".
 
 Dans le dossier script, vous trouverez aussi les fichiers bibliotheque-webapp.war et annexe-webapp.war. Il faut copier/coller ces fichier dans le dossier webapp du server Tomcat.
 Pour l'annexe, vous pouvez modifier certains paramètres avec le fichier "pret.properties":

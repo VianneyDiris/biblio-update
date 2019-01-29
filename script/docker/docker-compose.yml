@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+  biblio-update:
+    image: postgres:alpine
+    ports:
+    - '27181:5432'
+    container_name: biblio
+    environment:
+      POSTGRES_DB: db-biblio
+      POSTGRES_USER: adm-biblio
+      POSTGRES_PASSWORD: azerty
+    volumes:
+    - './sql:/docker-entrypoint-initdb.d'
+    restart: always
+    network_mode: bridge
