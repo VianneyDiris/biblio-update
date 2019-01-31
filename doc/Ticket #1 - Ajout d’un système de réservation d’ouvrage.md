@@ -14,7 +14,8 @@ Ajout de la table "Reservation" avec comme attribut :
 |id|Integer |identifiant unique de réservation            |
 |utilisateur_id |Integer  |  identifiant pour déterminer l'utilisateur        |
 |ouvrage_id|Integer|identifiant pour déterminer l'ouvrage|
-|date_reservation|Date|date de la réservation
+|date_reservation|Date|date de la réservation|
+|notification|boolean|détermine si l'utilisateur a reçu une notification
 
 
 
