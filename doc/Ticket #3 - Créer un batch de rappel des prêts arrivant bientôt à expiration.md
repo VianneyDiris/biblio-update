@@ -11,7 +11,7 @@ Création d'un batch pour les prêts arrivant à expiration
 - No update
 
 ## Annexe
-- No update
+- Ajout d'une page de profil utilisateur
 
 
 ## Batch
